@@ -1,0 +1,1825 @@
+%\documentclass[12pt,draftcls,onecolumn]{IEEEtran}
+\documentclass[10pt,twocolumn]{IEEEtran}
+\usepackage{amsmath,epsfig}
+
+%\usepackage{amsmath}
+\usepackage{epsf}
+\usepackage{psfrag}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}%
+\setcounter{MaxMatrixCols}{30}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.00.0.2552}
+%TCIDATA{CSTFile=40 LaTeX article.cst}
+%TCIDATA{LastRevised=Wednesday, November 24, 2004 21:26:56}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{Language=American English}
+  \newcommand{\twocases}[5]{#1                \left\{
+                \begin{alignedat}{2}
+                 &#2 \quad & &\text{if } #3\\
+                 &#4 \quad & &\text{if } #5
+                \end{alignedat}
+               \right.}
+  \newcommand{\stack}[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
+  \newcommand{\C}{\mathbb{C}}
+  \newcommand{\F}{\mathbf{F}}
+  \newcommand{\N}{\mathbb{N}}
+  \renewcommand{\P}{\mathbb{P}}
+  \newcommand{\R}{\mathbb{R}}
+  \newcommand{\Z}{\mathbb{Z}}
+  \renewcommand{\i}{\mathbf{i}}
+  \renewcommand{\j}{\mathbf{j}}
+  \renewcommand{\c}{\mathbf{c}}
+  \newcommand{\cn}{\mathbf{cn}}
+  \newcommand{\e}{\mathbf{e}}
+  \newcommand{\f}{\mathbf{f}}
+  \newcommand{\g}{\mathbf{g}}
+  \newcommand{\gl}{\mathbf{GL}}
+  \newcommand{\m}{\mathbf{m}}
+  \newcommand{\n}{\mathbf{n}}
+  \newcommand{\bNP}{\mathbf{NP}}
+  \newcommand{\bNPC}{\mathbf{NPC}}
+  \newcommand{\p}{\mathbf{p}}
+  \newcommand{\bP}{\mathbb{P}}
+  \newcommand{\bPo}{\mathbf{Po}}
+  \newcommand{\q}{\mathbf{q}}
+  \newcommand{\bS}{\mathbf{S}}
+  \newcommand{\bs}{\mathbf{s}}
+  \newcommand{\bt}{\mathbf{t}}
+  \newcommand{\T}{\mathbf{T}}
+  \newcommand{\U}{\mathbf{U}}
+  \renewcommand{\u}{\mathbf{u}}
+  \renewcommand{\v}{\mathbf{v}}
+  \newcommand{\V}{\mathbf{V}}
+  \newcommand{\w}{\mathbf{w}}
+  \newcommand{\W}{\mathbf{W}}
+  \newcommand{\x}{\mathbf{x}}
+  \newcommand{\X}{\mathbf{X}}
+  \newcommand{\y}{\mathbf{y}}
+  \newcommand{\z}{\mathbf{z}}
+  \newcommand{\0}{\mathbf{0}}
+  \newcommand{\1}{\mathbf{1}}
+  \newcommand{\del}{\boldsymbol{\delta}}
+  \newcommand{\bet}{\boldsymbol{\beta}}
+  \newcommand{\gam}{\boldsymbol{\gamma}}
+  \newcommand{\zet}{\boldsymbol{\zeta}}
+  \newcommand{\et}{\boldsymbol{\eta}}
+  \newcommand{\xit}{\boldsymbol{\xi}}
+  \newcommand{\Gam}{\mathbf{\Gamma}}
+  \newcommand{\bGamma}{\Gam}
+  \newcommand{\Lam}{\mathbf{\Lambda}}
+  \newcommand{\lam}{\mbox{\boldmath{$\lambda$}}}
+  \newcommand{\bH}{\mathbf{H}}
+  \newcommand{\bL}{\mathbf{L}}
+  \newcommand{\bM}{\mathbf{M}}
+  \newcommand{\bc}{\mathbf{c}}
+  \newcommand{\cA}{\mathcal{A}}
+  \newcommand{\cB}{\mathcal{B}}
+  \newcommand{\cC}{\mathcal{C}}
+  \newcommand{\cD}{\mathcal{D}}
+  \newcommand{\cE}{\mathcal{E}}
+  \newcommand{\cF}{\mathcal{F}}
+  \newcommand{\cG}{\mathcal{G}}
+  \newcommand{\cI}{\mathcal{I}}
+  \newcommand{\cM}{\mathcal{M}}
+  \newcommand{\cN}{\mathcal{N}}
+  \newcommand{\cO}{\mathcal{O}}
+  \newcommand{\cP}{\mathcal{P}}
+  \newcommand{\cR}{\mathcal{R}}
+  \newcommand{\cS}{\mathcal{S}}
+  \newcommand{\cT}{\mathcal{T}}
+  \newcommand{\cU}{\mathcal{U}}
+  \newcommand{\cV}{\mathcal{V}}
+  \newcommand{\cW}{\mathcal{W}}
+  \newcommand{\cX}{\mathcal{X}}
+  \newcommand{\cY}{\mathcal{Y}}
+  \newcommand{\cZ}{\mathcal{Z}}
+  \newcommand{\rE}{\mathrm{E}}
+  \newcommand{\rU}{\mathrm{U}}
+  \newcommand{\Cp}{\mathrm{Cap\;}}
+  \newcommand{\lan}{\langle}
+  \newcommand{\ran}{\rangle}
+  \newcommand{\an}[1]{\lan#1\ran}
+  \def\diag{\mathop{{\rm diag}}\nolimits}
+  \newcommand{\hs}{\hspace*{\parindent}}
+  \newcommand{\cl}{\mathop{\mathrm{Cl}}\nolimits}
+  \newcommand{\tr}{\mathop{\mathrm{tr}}\nolimits}
+  \newcommand{\Aut}{\mathop{\mathrm{Aut}}\nolimits}
+  \newcommand{\argmax}{\mathop{\mathrm{arg\,max}}}
+  \newcommand{\Eig}{\mathop{\mathrm{Eig}}\nolimits}
+  \newcommand{\Er}{\mathop{\mathrm{Error}}\nolimits}
+  \newcommand{\Gr}{\mathop{\mathrm{Gr}}\nolimits}
+  \newcommand{\trans}{^\top}
+%  \newcommand{\qed}{\hspace*{\fill} $\Box$\\}
+  \newcommand{\per}{\mathop{\mathrm{perm}}\nolimits}
+  \newcommand{\haff}{\mathrm{haf\;}}
+  \newcommand{\perio}{\mathrm{per}}
+  \newcommand{\conv}{\mathrm{conv\;}}
+  \newcommand{\Cov}{\mathrm{Cov}}
+  \newcommand{\inter}{\mathrm{int\;}}
+  \newcommand{\dist}{\mathrm{dist}}
+  \newcommand{\inn}{\mathrm{in}}
+  \newcommand{\grank}{\mathrm{grank}}
+  \newcommand{\mrank}{\mathrm{mrank}}
+  \newcommand{\krank}{\mathrm{krank}}
+  \newcommand{\out}{\mathrm{out}}
+  \newcommand{\orient}{\mathrm{orient}}
+  \newcommand{\Pu}{\mathrm{Pu}}
+  \newcommand{\rdc}{\mathrm{rdc}}
+  \newcommand{\range}{\mathrm{range\;}}
+  \newcommand{\Sing}{\mathrm{Sing\;}}
+  \newcommand{\topo}{\mathrm{top}}
+  \newcommand{\undir}{\mathrm{undir}}
+  \newcommand{\Var}{\mathrm{Var}}
+  \newcommand{\rC}{\mathrm{C}}
+  \newcommand{\rH}{\mathrm{H}}
+  \newcommand{\rM}{\mathrm{M}}
+  \newcommand{\rR}{\mathrm{R}}
+  \newcommand{\rS}{\mathrm{S}}
+  \newcommand{\pr}{\mathrm{pr}}
+  \newcommand{\inv}{\mathrm{inv}}
+  \newcommand{\pers}{\per_s}
+  \newcommand{\perm}{\mathrm{perm\;}}
+  \newcommand{\rank}{\mathrm{rank\;}}
+  \newcommand{\set}[1]{\{#1\}}
+  \newcommand{\spec}{\mathrm{spec\;}}
+  \newcommand{\supp}{\mathrm{supp\;}}
+  \newcommand{\vol}{\text{vol}}
+%  \newtheorem{theo}{\bfseries \hs Theorem}[section]
+%  \newtheorem{defn}[theo]{\bfseries \hs Definition}
+%  \newtheorem{prop}[theo]{\bfseries \hs Proposition}
+%  \newtheorem{prob}[theo]{\bfseries \hs Problem}
+%  \newtheorem{lemma}[theo]{\bfseries \hs Lemma}
+%  \newtheorem{algo}[theo]{\bfseries \hs Algorithm}
+%  \newtheorem{claim}[theo]{\bfseries \hs Claim}
+%  \newtheorem{corol}[theo]{\bfseries \hs Corollary}
+%  \newtheorem{con}[theo]{\bfseries \hs Conjecture}
+%  \newtheorem{example}[theo]{\bfseries \hs Example}
+%  \newtheorem{rem}[theo]{\bfseries \hs Remark}
+%  \newtheorem{nfact}[theo]{\bfseries \hs Numerical fact}
+%  \numberwithin{equation}{section} % Automatically number equations within sections
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+\newcommand{\qed}{\hfill \ensuremath{\blacksquare}}
+
+%\newenvironment{proof}[1][Proof]{\noindent \textbf{#1.} }{\qedsymbol}
+\newcommand{\qedsymbol}{\hspace{\fill}\rule{1.5ex}{1.5ex}}
+
+\usepackage{tabls}
+
+\begin{document}
+\title{Fast Algorithms and Performance Bounds for Sum Rate Maximization in Wireless Networks}
+\author{Chee Wei Tan$^1$, Mung Chiang$^1$ and R. Srikant$^2$\\
+\authorblockA{$^1$ Electrical Engineering Dept., Princeton University, NJ 08544 USA\\
+$^2$  Coordinated Science Lab and Dept. of Electrical and Computer Engineering, \\ University of Illinois at Urbana$\mbox{-}$Champaign, IL 61801 USA} }
+\maketitle
+\begin{abstract}
+Sum rate maximization by power control is an important, challenging, and extensively studied problem in wireless networks. It is a nonconvex optimization problem and achieves a rate region that is in general nonconvex. We derive approximation ratios to the sum rate objective by studying the solutions to two related problems, sum rate maximization using an SIR approximation and weighted max-min SIR optimization. We also show that the two related problems can be solved very efficiently, using much faster algorithms than existing ones in the literature. Furthermore, using a new parameterization of the sum rate maximization problem, we obtain a complete characterization of the power controlled rate region and its convexity property in various asymptotic regimes. Engineering implications are discussed for IEEE 802.11 networks. 
+%This paper looks at solving the sum rate maximization problem using fast power control algorithms, based on two well-studied power control problems in the literature: 1) the power controlled network utility maximization (SAPC) and the weighted max-min $\mathsf{SIR}$. We showed that they are intimately related and fast algorithms with geometric convergence rate can be obtained. The key advantage of maximizing sum rates with these algorithms is that their performance can be characterized by approximation ratios, which are evaluated in the context of practical interference-limited networks such as the IEEE 802.11 ad hoc network using extensive numerical simulations. We observe that these approximation ratios are useful to provide performance guarantees. The engineering implication is that, given a set of users, power control alone has the potential to improve sum rates.
+\end{abstract}
+
+{\small {\it Index Terms}--- Duality, Distributed Optimization, Power control, Weighted sum rate maximization, Nonnegative matrices and applications, Nonconvex optimization, Wireless networks.}
+
+\section{Introduction}
+\label{sec:introduction}
+
+The following problem of sum rate maximization through power control has been extensively studied in wireless network design (e.g., a partial list of recent work include \cite{Tan05,Chiang07,Kumaran06,Ebrahimi06,Gesbert07,Luo06,Charafeddine07,Chiang05,Luo08,Paschalidis07}): 
+\begin{equation}
+\label{nonconvex0}
+\begin{array}
+[c]{rl}
+\mbox{maximize} & \sum_l w_l \log(1+\mathsf{SIR}_l(\mathbf{p}))\\
+\mbox{subject to} & 0 \le p_l \le \bar{p}_l \,\;\; \forall \, l, \\
+\mbox{variables:} & p_l \,\;\; \forall \, l,
+\end{array}
+\end{equation}
+where $p_l$ is the transmit power, $w_l$ is some positive weight assigned by the network to the $l$th link (to reflect some long-term priority) and $\mathsf{SIR}_l(\mathbf{p})$ is the signal-to-interference noise ratio. Without loss of generality, we assume that $\mathbf{w}$ is a probability vector. Denote the optimal solution to (\ref{nonconvex0}) by $\mathbf{p}^{\star}$. 
+
+This important problem is difficult to solve or to analyze: (\ref{nonconvex0}) is a nonconvex optimization problem and the resulting rate region (obtained by varying $\mathbf{w}$) is in general a nonconvex set. Moreover, (\ref{nonconvex0}) may even be hard to approximate \cite{Luo08}. This paper aims at answering the following questions, interesting in their own right as well as for their importance in understanding cross-layer optimization using transmit powers: 
+\begin{itemize}
+\item Can some related efficiently-solvable problems provide provable approximation ratios to (\ref{nonconvex0})? We show how to solve (\ref{nonconvex0}) by (i) approximating the function that describes rate as a function of $\mathsf{SIR}$ and (ii) by solving the max-min $\mathsf{SIR}$ problem in Section III (Theorem \ref{pcalgo1fixedpoint}, \ref{maxminSIRcorollary}, \ref{fastmaxminsir}). We derive algorithms that are much faster than existing algorithms for these two extensively studied problems, and then quantify their approximation ratios with respect to $\mathbf{p}^{\star}$ of (\ref{nonconvex0}) in Section IV (Theorem \ref{maxminwsirapproxratio},\ref{sapcapproxratio}). 
+
+\item Can we completely characterize the resulting rate region obtained by solving (\ref{nonconvex0})? We provide the answer in a closed-form expression in Section V (Theorem \ref{Luserrateregioncorollary}), which quantifies the intuition that power-controlled rate region is convex for sufficiently weak interference channels or sufficiently small maximum powers.  
+\end{itemize}
+
+%In this paper, we investigate how to solve (\ref{nonconvex0}) using fast power control algorithms such as the weighted max-min $\mathsf{SIR}$, and give intuition on how the underlying rate region is shaped by interference.
+
+%An often used technique to solve (\ref{nonconvex0}) is the Lagrange duality. The shortcoming of using this approach is however that there may exist a duality gap between the global optimal primal and dual solution. Also, finding an optimal primal solution given an optimal dual solution, or vice versa, is in general very difficult. 
+%A common approach to solve (\ref{nonconvex0}) is to use approximations that often assumes the problem to lie in a particular operating regime. For example, in \cite{Chiang05}, the high $\mathsf{SIR}$ is assumed. In \cite{Paschalidis07}, the nonconvex problem in low $\mathsf{SIR}$ approximation is studied, and it was shown that the approximation is close to the optimal solution in the {\it asymptotically} small $\mathsf{SNR}$ region. While global optimal power control is highly desired, it is often of necessity to find local optimal solution with high quality performance guarantees in the presence of nonconvexities. However, (\ref{nonconvex0}) is not only difficult to optimize, but it may even be hard to approximate \cite{Luo08}. 
+
+%Despite these negative results on approximability and nonconvexities, we show that fast approximation algorithms can nevertheless be constructed. As a result, we can compute the approximation ratios of several suboptimal power control schemes in the literature under some specific channel conditions. One of the key contributions in this paper is to demonstrate that tight upper bounds can be developed in the {\it sufficiently} small $\mathsf{SNR}$ region. These bounds are useful as a benchmark to quantify the performance of many power algorithms including that in \cite{Paschalidis07}. 
+%This paper first presents several new and fast algorithms to two power control problems, including the max-min $\mathsf{SIR}$, that are well-studied in the literature. We argue that these algorithms are useful to solve the sum rate maximization problem. We also illustrate how the geometry of the power controlled achievable rate region in the sum rate problem changes with respect to the $\mathsf{SNR}$. Next, we show how to establish these algorithms as approximation algorithms to the sum rate problem, which apart from their independent interest in the application of nonnegative matrix theory to nonconvex optimization, provide performance guarantees. These performance guarantees are evaluated in an IEEE 802.11b ad hoc network and shown to be near-optimal.
+
+Overall, the contributions of the paper are as follows:
+\begin{enumerate}
+\item We start with the weighted sum rate maximization problem. Then, as 
+in past work based on Geometric Programming, we convert it to a convex problem by 
+approximating $\log(1+\mathsf{SIR})$ by $\log \mathsf{SIR}$, followed by a change of variables. At this point, we make a departure 
+and show that there exists a faster algorithm than the traditional 
+gradient algorithm to solve this $\mathsf{SIR}$ approximation power control (SAPC) problem.
+
+\item Then, we consider the max-min $\mathsf{SIR}$ problem and during the process of 
+convexifying the problem, followed by dual analysis, we discover an 
+unexpected connection to the SAPC problem which allows to come up with a 
+fast two time-scale algorithm. In addition, we are able to derive a 
+closed-form expression for the optimal power levels which is of 
+independent theoretical interest and also of practical use in small 
+networks.
+
+\item In the equal power case, we also derive a new algorithm for the 
+max-min $\mathsf{SIR}$ problem by exploiting a connection to the conditional 
+eigenvalue problem.
+
+\item We are able to solve the max-min $\mathsf{SIR}$ problem exactly, but not the 
+weighted sum rate maximization problem. Therefore, we study it further. We derive 
+a condition ($\mathbf{\tilde{B}} \ge 0$) under which we are able to bound the ratio of 
+the optimal weighted sum rate to the the sum rate obtained under SAPC.
+
+\item It is also interesting to study the sum rate optimization problem if 
+time-sharing is allowed. For this purpose, we first study the geometry 
+of the rate region. If the rate region is convex, then time-sharing is 
+not necessary; otherwise, it is. We obtain a closed-form expression for 
+the capacity region without time-sharing and show that if the 
+interference channel gains are small or if the maximum powers are small, 
+then the region is convex. Otherwise, it may not be.
+
+\item When the capacity region without time-sharing is not convex, then 
+it is interesting to understand if power control is useful at all. For 
+this purpose, we assume that time-sharing is performed by an IEEE 802.11 
+protocol and we study the impact of solving the weighted sum rate 
+maximization (which is the same as the {\it maxweight problem} (e.g., in \cite{LinShroff06,Eryilmaz06}) if queue 
+lengths are weights) using SAPC. Using standard IEEE 802.11 values for RTS, 
+CTS $\mathsf{SIR}$ thresholds, we numerically show that the condition $\mathbf{\tilde{B}} \ge 0$ is 
+satisfied after the RTS/CTS protocol is executed, and the approximation 
+ratio of our algorithm is quite close to 1. Further, the sum-rate with 
+SAPC is significantly higher than sum rate without power control.
+\end{enumerate}
+
+In answering the two motivating questions, we sharpen and apply a variety of tools from nonnegative matrix theory. An outline of the proof of Theorem 2 is provided in Section III to aid the flow of that section, and the proof of Theorem 4 in the Appendix. Due to space constraints, all other proofs can be found in the technical report available online \cite{Tan09atech}.
+
+The following notations are used. Boldface uppercase letters denote
+matrices, boldface lowercase letters denote column vectors,
+italics denote scalars, and $\mathbf{u} \ge \mathbf{v}$
+denotes componentwise inequality between vectors $\mathbf{u}$ and
+$\mathbf{v}$. We also let $(\mathbf{B}\mathbf{y})_l$ denote the $l$th element of $\mathbf{B}\mathbf{y}$. Let $\mathbf{x} \circ \mathbf{y}$ denote the Schur product of the vectors $\mathbf{x}$ and $\mathbf{y}$, i.e., $\mathbf{x} \circ \mathbf{y}=[x_1 y_1, \dots, x_L y_L]^{\trans}$.
+Let $\Vert \cdot \Vert^{\mathbf{x}}_{\infty}$ be the weighted maximum norm of the vector $\mathbf{w}$ with respect to the weight $\mathbf{x}$, i.e., $\Vert \mathbf{w} \Vert^{\mathbf{x}}_{\infty}=\max_l w_l /x_l$, $\mathbf{x} > \mathbf{0}$. We write $\mathbf{B} \ge \mathbf{F}$ if $B_{ij} \ge F_{ij}$ for all $i,j$. The Perron-Frobenius eigenvalue of a nonnegative matrix $\mathbf{F}$ is denoted as $\rho(\mathbf{F})$, and the Perron (right) and left eigenvector of $\mathbf{F}$ associated with $\rho(\mathbf{F})$ are denoted by $\mathbf{x}(\mathbf{F}) \ge \mathbf{0}$ and $\mathbf{y}(\mathbf{F}) \ge \mathbf{0}$ (or simply $\mathbf{x}$ and $\mathbf{y}$ when the context is clear) respectively. Recall that the Perron-Frobenius eigenvalue of $\mathbf{F}$ is the eigenvalue with the largest absolute value. Assume that $\mathbf{F}$ is a nonnegative irreducible matrix.  Then $\rho(\mathbf{F})$ is simple and positive, and $\x(\mathbf{F}),\y(\mathbf{F}) > \0$ \cite{Berman79}. We will assume the normalization: $\x(\mathbf{F})\circ\y(\mathbf{F})$ is a probability vector. The super-script $(\cdot)^{\trans}$ denotes transpose. We denote $\mathbf{e}_l$ as the $l$th unit coordinate vector and $\mathbf{I}$ as the identity matrix. 
+
+\section{System Model}
+\label{sysmodel}
+
+We consider an infrastructure-less wireless network where the channel is interference-limited, and all the $L$ links (equivalently, transceiver pairs) treat interference as white noise and do not use multiuser detection. 
+Such a model of communication has also been previously used in \cite{Tan05,Chiang05,Charafeddine07,Gesbert07,Franceschetti07,Agarwal04} for cellular or ad hoc networks. The terminology in the area of infrastructure-less wireless networks is not standard. To clearly express the fact that we consider networks without multihop transmissions, we call our model a peer-to-peer wireless networks, i.e., one where each transmitter directly communicates with its receiver without using an intermediate relay. Further, we assume that each node is either a transmitter or a receiver, but not both. Finally, each transmitter is associated with a unique receiver and vice versa. Suppose that a node is equipped with multiple transceivers, then each transceiver associated with the node can be thought of as a virtual link and the above model still captures such scenarios. Thus, our model can capture multiple access and broadcast scenarios.
+
+The transmit power for the $l$th link is denoted by $p_l$ for all $l$. Assuming a
+matched-filter receiver, the $\mathsf{SIR}$ for the $l$th receiver is given by
+\begin{equation}
+\label{sir} \mathsf{SIR}_{l}(\mathbf{p})=\frac{G_{ll}p_{l}}{\displaystyle \sum_{j\neq
+l} G_{lj}p_{j}+n_{l}},
+\end{equation}
+where $G_{lj}$ are the channel gains from transmitter $j$ to
+receiver $l$ and $n_l$ is the additive white Gaussian noise (AWGN)
+power for the $l$th receiver. The channel gain matrix $\mathbf{G}$ takes into account propagation loss, spreading loss and other transmission modulation factors. For example, if we assume that the signal power decays with distance, then we let $G_{lj}=d^{-\alpha}_{lj}$, where $d_{lj}$ is the relative distance between the $l$th and the $j$th user, and $\alpha > 2$ \cite{Chiang05,Agarwal04}. Assuming a fixed bit error rate (BER) at the receiver, the Shannon capacity formula can be used to deduce the achievable data rate of the $l$th user as \cite{Cover91}:
+\begin{equation}
+\label{thruput}
+\log \left(1+\frac{\mathsf{SIR}_{l}(\mathbf{p})}{\Gamma} \right) \quad \mbox{nats/symbol},
+\end{equation}
+where $\Gamma$ is the gap to capacity, which is always greater than 1. In this paper, we absorb $(1/\Gamma)$ into $G_{ll}$ for all $l$, and write the achievable data rate as $\log (1+\mathsf{SIR}_{l}(\mathbf{p}))$. We assume that $p_l \le \bar{p}_l$ for all $l$, since realistic systems have limited power. The $l$th user has signal-to-noise ratio ($\mathsf{SNR}$) be $G_{ll}p_l/n_l$.
+
+Next, we define
+\begin{equation}
+\label{matrixF}
+F_{lj}=\left\{\begin{array}{cl}
+    0, & \mbox{if} \,\, l = j \\
+    \frac{G_{lj}}{G_{ll}}, & \mbox{if} \,\, l \ne j
+       \end{array}\right.
+\end{equation}
+and
+\begin{equation}
+\mathbf{v}= \displaystyle \left(\frac{n_1}{G_{11}}, \frac{n_2}{G_{22}}, \dots,\frac{n_L}{G_{LL}} \right)^{\trans}.
+\end{equation}
+Clearly, $\mathbf{F}$ is nonnegative. Moreover, we assume that $\mathbf{F}$ is irreducible, i.e., each link has at least an interferer. Thus, $\mathsf{SIR}_l(\mathbf{p})$ can be compactly written as $p_l/((\mathbf{F}\mathbf{p})_l+v_l)$.
+\begin{figure}
+\begin{minipage}[t]{1.7in}
+%\begin{minipage}[t]{3.4in}
+\begin{center}
+\includegraphics[width=1.8in]{2x2User.ps}
+%\includegraphics[width=3.5in]
+\end{center}
+\end{minipage}
+%\hfill
+\begin{minipage}[t]{1.7in}
+%\begin{minipage}[t]{3.4in}
+\begin{center}
+\includegraphics[width=1.8in]{block.ps}
+%\includegraphics[width=3.5in]
+\end{center}
+\end{minipage}
+\begin{center}
+(a) \hspace{1.5in} (b)
+\end{center}
+\caption{\scriptsize{(a) A model for a 2-user interference-limited channel. (b) Overview of the connection between the three main optimization problems in the respective sections: i) Weighted sum rate maximization in (\ref{nonconvex0}), ii) SAPC in (\ref{sapc}), iii) Weighted max-min $\mathsf{SIR}$ in (\ref{maxminwsir}). The theorems connecting the optimization problems are also indicated.}} \label{figoverview}
+\end{figure}
+
+Figure \ref{figoverview}(a) shows the model for a 2-user interference-limited channel, which is a special case of a peer-to-peer wireless network.
+%\begin{figure}
+%\begin{center}
+%\includegraphics[scale=.8]{2x2User.ps}
+%\caption{\label{2x2User}A model for a 2-user interference-limited channel.}
+%\end{center}
+%\end{figure}
+
+\section{Fast power control algorithms}
+\label{algorithms}
+In this section, we consider two widely studied power control. The first 
+problem we consider is an approximation to (\ref{nonconvex0}), i.e., maximize a 
+weighted sum of link rates by first approximating the link rate expression 
+$\log(1+\mathsf{SIR})$ by $\log(\mathsf{SIR})$, perform a change of variables to convexify 
+the problem, and then use a gradient projection technique to solve the 
+problem \cite{Chiang07,Chiang05,Stanczak07}. We call such an approximation method SAPC. Here, we show that the gradient approach can 
+be replaced by an alternative procedure which leads to faster 
+convergence.  Specifically, we show that the 
+approximation to the link rate expression can be viewed in terms of standard
+interference function introduced in \cite{Yates95}, which allows us 
+to use the traditional \emph{greedy} algorithm used in that setting. 
+Both theoretical analysis and numerical results confirm that this 
+approach leads to much faster convergence than the gradient approach.
+
+Another problem we consider is the widely-studied weighted max-min $\mathsf{SIR}$ 
+power control problem where the goal is to maximize the minimum weighted 
+$\mathsf{SIR}$ at any receiver in the network. By studying the Lagrangian dual of 
+the weighted max-min $\mathsf{SIR}$ problem, we observe an interesting connection 
+between the weighted max-min $\mathsf{SIR}$ problem and SAPC, which allows us to 
+use the interference function approach mentioned earlier as an 
+intermediate step to solve the weighted max-min $\mathsf{SIR}$ problem as well. In 
+the special case when the weights in the max-min $\mathsf{SIR}$ problem are equal 
+and when all nodes in the network have the same maximum transmit power 
+constraint, we show that an even faster power-control algorithm exists.
+
+In addition to the above algorithms for power-control problems, we also 
+show other theoretical results in this section which are of interest in 
+their own right. We first derive a closed-form expression for the 
+weighted max-min power control problem and then derive conditions under 
+which the max-min $\mathsf{SIR}$ problem and SAPC have the same solution. These 
+results are shown by exploiting a connection between power-control 
+problems and nonnegative matrix theory. We refer the readers to Figure \ref{figoverview}(b) for an overview of the connection between these main optimization problems in the respective sections.
+
+%\subsection{Utility Maximization}
+%The $l$th link is associated with a strictly concave, non-decreasing and continuously differentiable utility function $U_l(r_l)$, which models the utility that it obtains from transmission at a rate $r_l$ given in (\ref{thruput}). The network's objective is to maximize the total utilities of all links. Consider the following power controlled utility maximization:
+%\begin{equation}
+%\label{sapc}
+%\begin{array}
+%[c]{rl}
+%\mbox{maximize} & \sum_l U_l(r_l)\\
+%\mbox{subject to} & r_l = \log(1+\mathsf{SIR}_l(\mathbf{p})) \,\;\; \forall \, l, \\
+%& 0 \le p_l \le \bar{p}_l \,\;\; \forall \, l, \\
+%\mbox{variables:} & p_l \,\;\; \forall \, l.
+%\end{array}
+%\end{equation}
+%
+%For certain utility functions, e.g., $U_l(r_l)=w_l \log(e^{r_l}-1)$ for all $l$, where $w_l$ is some positive weight assigned by the network to each link (to reflect some long-term priority), (\ref{sapc}) is solvable. In this paper, without loss of generality, we assume that $\mathbf{w}$ is a probability vector. Other amenable utilities include any $U_l(e^{\tilde{r}_l})$ that is concave in $\tilde{r}_l$, where $\tilde{r}_l = \log r_l$ for all $l$ \cite{Tan07}.
+
+\subsection{$\mathsf{SIR}$ approximation power control (SAPC)}
+In this section, we consider the following $\mathsf{SIR}$ approximation to (\ref{nonconvex0}):
+\begin{equation}
+\label{sapc}
+\begin{array}
+[c]{rl}
+\mbox{maximize} & \sum_l w_l \log\mathsf{SIR}_l(\mathbf{p})\\
+\mbox{subject to} & 0 \le p_l \le \bar{p}_l \,\;\; \forall \, l, \\
+\mbox{variables:} & p_l \,\;\; \forall \, l.
+\end{array}
+\end{equation}
+
+We remark that though (\ref{sapc}) is nonconvex, it is not intractable \cite{Chiang07,Chiang05,Stanczak07}. We denote $\mathbf{p}^{\prime}$ as the optimal solution to (\ref{sapc}). In particular, by making a change of variable, i.e., $\tilde{p}_l=\log p_l$ for all $l$, (\ref{sapc}) is convex in $\tilde{\mathbf{p}}$ and thus $\tilde{p}^{\star}_l=\log p^{\star}_l$ for all $l$ \cite{Chiang05}. To solve (\ref{sapc}) optimally, there are gradient-based algorithms (requiring step size tuning) in \cite{Chiang05,Stanczak07}, which are based on the dynamical system $\dot{p}_l=f(p_l)$ for some function $f$ after changing the variables in $\mathbf{\tilde{p}}$ to $\mathbf{p}$.
+
+A different approach is to derive a fixed point iteration, i.e., $\mathbf{p}=g(\mathbf{p})$ for some function $g$ based on the Karush-Kuhn-Tucker (KKT) optimality conditions (see \cite{Boyd}). Now, it can be verified that the KKT conditions of the convex form of (\ref{sapc}) in the variables $\mathbf{\tilde{p}}$ can be rewritten in terms of $\mathbf{p}$ as $\mathbf{p}=\min(I(\mathbf{p}),\mathbf{\bar{p}})$ for some vector function $I$. Furthermore, it can be shown that $I(\mathbf{p})$ is a standard interference function \cite{Yates95}. By leveraging the interference function results in \cite{Yates95}, this leads us to propose the following (step size free) algorithm that converges to the optimal solution of (\ref{sapc}), and moreover geometrically fast when the initial point is $\bar{\mathbf{p}}$. This algorithm is also used as a building block for the weighted max-min $\mathsf{SIR}$ power control later. 
+\rule{0.49\textwidth}{0.1mm}
+\begin{algorithm}[SAPC Algorithm]
+\label{pcalgo1}
+\hspace{.2in}
+\begin{enumerate}
+\item Update $\mathbf{p}(k+1)$:
+\begin{equation}
+\label{pcalgo1eqn}
+%p_l(k+1) = \min \left\{ w_l/\left(\sum_{j \ne l} \frac{w_j F_{jl}}{(\mathbf{F}\mathbf{p}(k))_j + v_j } \right), \bar{p}_l \right\}.
+p_l(k+1) = \min \left\{ w_l/\left(\sum_{j \ne l} \frac{w_j F_{jl} \mathsf{SIR}_j(\mathbf{p}(k))}{p_j } \right), \bar{p}_l \right\}.
+\end{equation}
+for all $l$, where $k$ indexes discrete time slots. 
+\end{enumerate}
+\end{algorithm}
+\rule{0.49\textwidth}{0.1mm}
+\begin{remark}
+The information required for computation in (\ref{pcalgo1eqn}) can be obtained by distributed message passing: For $j \ne l$, the $j$th user first computes $w_j \mathsf{SIR}_j(\mathbf{p}(k))/(G_{jj}p_j)$ and measures $G_{jl}$ by pilot signal transmitted from the $l$th user. Then, $G_{jl}w_j \mathsf{SIR}_j(\mathbf{p}(k))/(G_{jj}p_j)$ is broadcasted to the $l$th user for computation.
+\end{remark}
+
+\begin{theorem}
+\label{pcalgo1fixedpoint}
+Starting from any initial point $\mathbf{p}(0)$, $\mathbf{p}(k)$ in Algorithm SAPC converges to $\mathbf{p^{\prime}}$ asymptotically under both synchronous and asynchronous updates.
+\end{theorem}
+
+\begin{corollary}
+\label{pcalgo1fixedpointcorollary}
+Starting from the initial point $\mathbf{p}(0)=\bar{\mathbf{p}}$, $\mathbf{p}(k)$ in Algorithm SAPC converges synchronously at a geometric rate to $\mathbf{p^{\prime}}$.
+\end{corollary}
+
+\begin{remark}
+The proofs of Theorem \ref{pcalgo1fixedpoint} and Corollary \ref{pcalgo1fixedpointcorollary} follow the standard interference function approach \cite{Yates95}, and the key is to show that (\ref{pcalgo1eqn}) is a standard interference function.
+\end{remark}
+
+\begin{remark}
+The choice of $\mathbf{p}(0)=\bar{\mathbf{p}}$ does not limit the application of Corollary \ref{pcalgo1fixedpointcorollary}, because it can be shown that, at optimality of (\ref{sapc}), some users transmit at maximum power. Hence, some users will not need further power update since they are already optimal at the initial step.
+\end{remark}
+
+In the following example, we give the geometric convergence rate in Corollary \ref{pcalgo1fixedpointcorollary} when $L=2$.
+\begin{example}
+When $L=2$, we can rewrite (\ref{pcalgo1eqn}) as
+\begin{equation}
+\label{2usersapcfixedpoint}
+p_l(k+1)=\min \left\{ \frac{(\frac{w_l}{w_j F_{jl}})p_j(k)}{\mathsf{SIR}_j(\mathbf{p}(k))}, \; \bar{p}_l \right\}, \;\;\; l \ne j
+\end{equation}
+for $l,j=1,2$, which has a structure similar to the well known Distributed Power Control (DPC) algorithm \cite{Foschini93} (with the virtual uplink receivers interchanged), where $w_2/(w_1 F_{12})$ and $w_1/(w_2 F_{21})$ can be treated as a $\mathsf{SIR}$ target used in the DPC algorithm for the $1$st and $2$nd user respectively. This allows a $1$-bit message passing scheme to be implemented, where the $1$st receiver instructs the $2$nd transmitter to increase or decrease its power by comparing the received $\mathsf{SIR}$ with the virtual $\mathsf{SIR}$ target at each iteration. If $w_l < w_j, l \ne j$ for $l,j=1,2$, then $w_l/w_j$ and $1$ are the geometric convergence rate for $p_l(k+1)$ and $p_j(k+1)$ respectively. In other words, the user with a larger weight always transmits at maximum power. If $w_1=w_2$, then the geometric convergence rate is simply $1$. To be exact, both links always transmit at maximum power. 
+%To further quantify the performance of (\ref{2usersapcfixedpoint}) at high $\mathsf{SNR}$, we note from (\ref{2usersapcfixedpoint}) that, when $w_1=w_2$ and $\bar{p}_1 \approx \bar{p}_2$ are large, $r_1$ and $r_2$ tend towards $\log(1+1/F_{12})$ and $\log(1+1/F_{21})$, respectively. This is comparable to the rate achieved by max-min $\mathsf{SIR}$ allocation to be discussed below (cf. (\ref{2x2asympthruput}) later). Moreover, the unconstrained max-min $\mathsf{SIR}$ is a geometric mean of the $\mathsf{SIR}$ allocation, i.e., $\sqrt{\mathsf{SIR}_1(\mathbf{p}^{\prime})\mathsf{SIR}_2(\mathbf{p}^{\prime})} = 1/\rho(\mathbf{F})$ (as a special case of Theorem \ref{approx1ubtheorem} below, where $\mathbf{w}=\mathbf{x}(\mathbf{F}) \circ \mathbf{y}(\mathbf{F})=(1/2,1/2)^{\trans}$). 
+\end{example}
+
+\begin{example}
+\label{numerical1}
+We evaluate the performance of Algorithm SAPC and the subgradient algorithm in \cite{Chiang05}. We consider a network that adopt the path loss model with a path loss exponent of 3.7 and log-normal shadowing standard deviation of 8.9dB and we assume slow fading. Ten users are distributed uniformly in a cell. All users have the same maximum power of 33mW. There are many standard choices of step size $\alpha(k)$ used in the subgradient method \cite{Bertsekas99}. We use a (sufficiently small) constant stepsize and $\alpha(k)=(m+1)/(m+k)$ for $m=5,500$ \cite{Bertsekas99} for the subgradient approach in \cite{Chiang05}. Figure \ref{fig1} shows the evolution of $p_1$ and $\mathsf{SIR}_1$, which illustrate that Algorithm SAPC converges much faster than the subgradient algorithm in \cite{Chiang05}, regardless of the subgradient stepsizes. In most of our simulations, the convergence speed of Algorithm SAPC is several orders magnitude faster than the subgradient algorithm.
+
+\begin{figure}
+\begin{minipage}[t]{1.7in}
+%\begin{minipage}[t]{3.4in}
+\begin{center}
+\includegraphics[width=1.8in]{powerUser1_PNUM.eps}
+%\includegraphics[width=3.5in]
+\end{center}
+\end{minipage}
+%\hfill
+\begin{minipage}[t]{1.7in}
+%\begin{minipage}[t]{3.4in}
+\begin{center}
+\includegraphics[width=1.8in]{sirUser1_PNUM.eps}
+%\includegraphics[width=3.5in]
+\end{center}
+\end{minipage}
+\begin{center}
+(a) \hspace{1.5in} (b)
+\end{center}
+\caption{\scriptsize{Performance comparison of Algorithm SAPC and the subgradient approach in \cite{Chiang05} that uses different stepsizes $\alpha$ of i) $\alpha(k)=(5+1)/(5+k)$, ii) $\alpha(k)=(500+1)/(500+k)$ and iiii) $\alpha(k)=0.01$. (a) Evolution of $p_1$ (b) Evolution of $\mathsf{SIR}_1$. }} \label{fig1}
+\end{figure}
+\end{example}
+
+\subsection{Weighted max-min $\mathsf{SIR}$ power control}
+Let $\boldsymbol{\beta}$ be a priority vector similar to $\mathbf{w}$ in (\ref{sapc}). Consider the following constrained weighted max-min $\mathsf{SIR}$ problem:
+\begin{equation}
+\label{maxminwsir}
+\begin{array}
+[c]{rl}
+\mbox{maximize} & \displaystyle \min_l \frac{\mathsf{SIR}_l(\mathbf{p})}{\beta_l} \\
+\mbox{subject to} & \mathbf{p} \le \bar{\mathbf{p}} \\
+\mbox{variables:} & \mathbf{p}.
+\end{array}
+\end{equation}
+
+By exploiting a connection between nonnegative matrix theory and the algebriac structure of max-min $\mathsf{SIR}$ power control, we can give a closed form solution to (\ref{maxminwsir}).
+\begin{theorem}
+\label{maxminsirtheorem}
+Consider the constrained Max-min $\mathsf{SIR}$ problem in (\ref{maxminwsir}). The optimal solution is such that the $\mathsf{SIR}$ for all users are equal. The optimal $\mathsf{SIR}$ is given by
+\begin{equation}
+\gamma^{\ast} = \frac{1}{\rho(\diag(\boldsymbol{\beta})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}))},
+\end{equation}
+where
+\begin{equation}
+\label{maxminsiri}
+i = \arg \displaystyle \min_l \frac{1}{\rho(\diag(\boldsymbol{\beta})(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}_l^{\trans}))}.
+\end{equation}
+
+Further, all links $i$ that achieve the minimum in (\ref{maxminsiri}) transmit at peak power $\bar{p}_i$ and the rest do not. Further, the optimal $\mathbf{p}$, denoted by $\mathbf{p}^{\ast}$, is $t \mathbf{x}(\diag(\boldsymbol{\beta})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}))$ for a constant $t=\bar{p}_i/x_i$.
+\end{theorem}
+
+Next, we sketch an outline of the proof for Theorem \ref{maxminsirtheorem}, which is based on the Lagrange dual method \cite{Bertsekas99}. Introducing an auxiliary variable $\tau$, we can rewrite (\ref{maxminwsir}) as
+\begin{equation}
+\label{maxminwsirgeneral2}
+\begin{array}
+[c]{rl}
+\mbox{maximize} & \tau \\
+\mbox{subject to} & \tau \le \frac{\mathsf{SIR}_l(\mathbf{p})}{\beta_l} \;\; \forall \; l, \\
+& \mathbf{p} \le \bar{\mathbf{p}} \\
+\mbox{variables:} & \tau, \; \mathbf{p}.
+\end{array}
+\end{equation}
+Making a change of variables: $\tilde{\tau}=\log \tau$ and $\tilde{p}_l=\log p_l$ for all $l$, (\ref{maxminwsirgeneral2}) is equivalent to the following convex problem:
+\begin{equation}
+\label{maxminwsirgeneral3}
+\begin{array}
+[c]{rl}
+\mbox{maximize} & \tilde{\tau} \\
+\mbox{subject to} & \tilde{\tau} \le \log (\mathsf{SIR}_l(\mathbf{\tilde{p}})/\beta_l) \;\; \forall \; l, \\
+& \tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l, \\
+\mbox{variables:} & \tilde{\tau}, \; \mathbf{\tilde{p}}.
+\end{array}
+\end{equation}
+
+Next, introducing the dual variables $\boldsymbol{\lambda}$, the partial Lagrangian of (\ref{maxminwsirgeneral3}) is given by
+\begin{equation}
+\label{maxminwsirgeneral3lang}
+L(\{\tilde{\tau},\mathbf{\tilde{p}}\},\{\boldsymbol{\lambda}\}) = \tilde{\tau}(1-\sum_l \lambda_l) + \sum_l \lambda_l \log (\mathsf{SIR}_l(\mathbf{\tilde{p}})/\beta_l).
+\end{equation}
+In order for (\ref{maxminwsirgeneral3lang}) to be bounded, we must have $\sum_l \lambda_l = 1$. Hence, the dual problem of (\ref{maxminwsirgeneral3}) is given by
+\begin{equation}
+\label{maxminwsirdual1}
+\begin{array}
+[c]{rl}
+\mbox{minimize} & \displaystyle \max_{\tilde{\tau}, \, \tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l} L(\{\tilde{\tau},\mathbf{\tilde{p}}\},\{\boldsymbol{\lambda}\}) \\
+\mbox{subject to} & \mathbf{1}^{\trans} \boldsymbol{\lambda}=1, \; \boldsymbol{\lambda} \ge \mathbf{0},\\
+\mbox{variables:} & \boldsymbol{\lambda}.
+\end{array}
+\end{equation}
+
+At optimality, the optimal objective to (\ref{maxminwsirgeneral3}) is equal to the optimal dual function of (\ref{maxminwsirdual1}) and is given by
+\begin{equation}
+\label{maxminwsirgeneral3dual}
+\begin{array}
+[c]{rl}
+\tilde{\tau}^{\star} & = \displaystyle \max_{\tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l} L(\{\tilde{\tau},\mathbf{\tilde{p}}\},\{\boldsymbol{\lambda^{\star}}\}) \\
+& = \sum_l \lambda^{\star}_l \log (\mathsf{SIR}_l(\mathbf{p}(\boldsymbol{\lambda}^{\star}))/\beta_l),
+\end{array}
+\end{equation}
+where
+\begin{equation}
+\label{plambda0}
+\mathbf{p}(\boldsymbol{\lambda})=\arg \max_{p_l \le \bar{p}_l  \;\; \forall \; l} L(\{\tilde{\tau},\mathbf{p}\},\{\boldsymbol{\lambda}\}).
+\end{equation}
+
+A final key step is to show that $\tilde{\tau}$ in (\ref{maxminwsirgeneral3dual}) can be upper bounded using the Friedland-Karlin inequalities in \cite{Friedland75}, and this upper bound is in turn achieved by a feasible $\mathbf{p}=t \mathbf{x}(\diag(\boldsymbol{\beta})(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}_l^{\trans}))$ for some constant $t>0$ and moreover $tx_i = \bar{p}_i$ \cite{Tan09atech}. 
+
+While the closed form solution in Theorem \ref{maxminsirtheorem} is only useful when the number of users are small (so that the eigenvector $\mathbf{x}(\diag(\boldsymbol{\beta})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}))$ can be computed centrally), we next discuss how to solve (\ref{maxminwsir}) for any number of users distributively. Since (\ref{maxminwsirgeneral3}) is convex, it is easy to solve for the solution using standard optimization tools. However, in a network setting, it is often desired that computation be done distributedly.
+The Lagrange dual approach, as shown in (\ref{maxminwsirgeneral3lang})-(\ref{maxminwsirgeneral3dual}), is suitable for distributed computation \cite{Srikant03}. Furthermore, from (\ref{maxminwsirgeneral3dual}) and \ref{plambda0}, we observe that the optimal dual function has a form similar to the SAPC problem in (\ref{sapc}), which allows us to evaluate this dual function, possibly asynchronously, with fast convergence (cf. Theorem \ref{pcalgo1fixedpoint} and Corollary \ref{pcalgo1fixedpointcorollary}).
+This leads us to solve (\ref{maxminwsir}) using the following weighted Max-min $\mathsf{SIR}$ Algorithm. 
+%\begin{algorithm}[Max-min $\mathsf{SIR}$ Algorithm]
+%\label{pcalgomaxmin}
+%\hspace{.2in}
+%\begin{enumerate}
+%\item Initialize an arbitrarily positive $\mathbf{w}(t)$ and small $\epsilon, \alpha(1)$.
+%\item Set $\mathbf{p}(0) = \bar{\mathbf{p}}$. Repeat 
+%$$
+%p_l(k+1) = \min \left\{ w_l(t)/\left(\sum_{j \ne l} \frac{w_j(t) F_{jl}}{(\mathbf{F}\mathbf{p}(k))_j + v_j } \right), \bar{p}_l \right\}
+%$$
+%until $\Vert \mathbf{p}(k+1)-\mathbf{p}(k) \Vert \le \epsilon$.
+%\item Compute 
+%$
+%w_l(t+1) = \max \{ w_l(t)+ \alpha(t) (\sum_j w_j(t) \log \mathsf{SIR}_j(\mathbf{p}(k+1)) - \log \mathsf{SIR}_l(\mathbf{p}(k+1))), \, 0 \}
+%$
+%for all $l$, where $t$ indexes discrete time slots much larger than $k$.
+%\item Normalize $\mathbf{w}(t+1)$ so that $\mathbf{1}^{\trans} \mathbf{w}(t+1)=1$. Go to Step 2.
+%\end{enumerate}
+%\end{algorithm}
+%
+%\begin{theorem}
+%\label{maxminSIRcorollary}
+%Starting from any initial point $\mathbf{w}(0)$ and small $\epsilon$ and if the positive step size $\alpha(t)$ is strictly less than
+%\begin{equation}
+%\frac{2(- \log \rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})- \sum_l w_l(t)\log \mathsf{SIR}_l(\mathbf{p}(\mathbf{w}(t))) )}{\Vert \mathbf{g}(t) \Vert^2},
+%\end{equation}
+%where
+%$(\mathbf{g}(t))_l =\sum_j w_j(t) \log \mathsf{SIR}_j (\mathbf{p}(\mathbf{w}(t))) - \log \mathsf{SIR}_l (\mathbf{p}(\mathbf{w}(t)))$, $\mathbf{p}(k)$ in Algorithm \ref{pcalgomaxmin} converges synchronously at a geometric rate and totally asynchronously to $\mathbf{p}=\mathbf{x}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$ (unique up to a scaling constant), and $\mathbf{w}(t)$ converges to $\mathbf{x}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}) \circ \mathbf{y}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$.
+%\end{theorem}
+\rule{0.49\textwidth}{0.1mm}
+\begin{algorithm}[Weighted Max-min $\mathsf{SIR}$ Algorithm]
+\label{pcalgomaxmin}
+%\label{pcalgoweightedmaxmin}
+\hspace{.2in}
+\begin{enumerate}
+\item Initialize an arbitrarily positive $\mathbf{w}(t)$ and small $\epsilon, \alpha(1)$.
+\item Set $\mathbf{p}(0) = \bar{\mathbf{p}}$. Repeat 
+$$
+p_l(k+1) = \min \left\{ w_l(t)/\left(\sum_{j \ne l} \frac{w_j(t) F_{jl} \mathsf{SIR}_j(\mathbf{p}(k))}{p_j(k))} \right), \bar{p}_l \right\}
+$$
+until $\Vert \mathbf{p}(k+1)-\mathbf{p}(k) \Vert \le \epsilon$.
+\item Compute 
+$
+w_l(t+1) = \max \{ w_l(t)+ \alpha(t) (\sum_j w_j(t) \log (\mathsf{SIR}_j(\mathbf{p}(k+1))/\beta_j) - \log (\mathsf{SIR}_l(\mathbf{p}(k+1))/\beta_l)), \, 0 \}
+$
+for all $l$, where $t$ indexes discrete time slots much larger than $k$.
+\item Normalize $\mathbf{w}(t+1)$ so that $\mathbf{1}^{\trans} \mathbf{w}(t+1)=1$. Go to Step 2.
+\end{enumerate}
+\end{algorithm}
+\rule{0.49\textwidth}{0.1mm}
+\begin{theorem}
+\label{maxminSIRcorollary}
+Starting from any initial point $\mathbf{w}(0)$ and small $\epsilon$ and if the positive step size $\alpha(t)$ is strictly less than
+\begin{equation}
+\begin{array}{cl}
+& 2(-\log \rho(\diag(\boldsymbol{\beta})(\mathbf{F}+(1/\bar{p}_i))\mathbf{v}\mathbf{e}_i^{\trans})- \nonumber \\
+& \sum_l w_l(t)\log (\mathsf{SIR}_l(\mathbf{p}(\mathbf{w}(t)))/\beta_l) )/\Vert \mathbf{g}(t) \Vert^2,
+\end{array}
+\end{equation}
+where
+\begin{equation}
+\label{maxminwsiri}
+i = \arg \displaystyle \min_l \frac{1}{\rho(\mbox{diag}(\boldsymbol{\beta})(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}_l^{\trans}))}.
+\end{equation}
+and $(\mathbf{g}(t))_l =\sum_j w_j(t) \log (\mathsf{SIR}_j (\mathbf{p}(\mathbf{w}(t)))/\beta_j) - \log \frac{\mathsf{SIR}_l (\mathbf{p}(\mathbf{w}(t)))}{\beta_l}$, $\mathbf{p}(k)$ in Algorithm \ref{pcalgomaxmin} converges synchronously at a geometric rate and totally asynchronously to $\mathbf{p}=\mathbf{x}(\diag(\boldsymbol{\beta})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}))$ (unique up to a scaling constant), and $\mathbf{w}(t)$ converges to $\mathbf{x}(\diag(\boldsymbol{\beta})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})) \circ \mathbf{y}(\diag(\boldsymbol{\beta})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}))$.
+\end{theorem}
+
+\begin{remark}
+For a given $\mathbf{w}(t)$ at Step 2 of the Max-min $\mathsf{SIR}$ Algorithm, Algorithm SAPC is used as an intermediate iterative method, whose geometrical convergence rate is guaranteed by Corollary \ref{pcalgo1fixedpointcorollary}. 
+\end{remark}
+
+Next, we particularize (\ref{maxminwsir}) by letting $\beta_l=\beta_j$ for all $l \ne j$ and consider the constrained max-min $\mathsf{SIR}$ problem:
+\begin{equation}
+\label{maxminsirgeneral1}
+\begin{array}
+[c]{rl}
+\mbox{maximize} & \displaystyle \min_l \mathsf{SIR}_l(\mathbf{p}) \\
+\mbox{subject to} & \mathbf{p} \le \bar{\mathbf{p}} \\
+\mbox{variables:} & \mathbf{p}.
+\end{array}
+\end{equation}
+
+As a side note, the following result illustrates that if the weight vector $\mathbf{w}$ in (\ref{sapc}) is chosen in a particular form, then the solution obtained by Algorithm SAPC is the same as that obtained by Max-min $\mathsf{SIR}$ Algorithm.
+
+\begin{corollary}[Relating Max-min $\mathsf{SIR}$ and SAPC]
+\label{approx1ubtheorem}
+Let $\mathbf{x}$ and $\mathbf{y}$ be the Perron and left eigenvectors of $\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}$ respectively, where $i$ is defined in (\ref{maxminsiri}). Recall that $t\mathbf{x}$ is also the optimal power vector for the Max-min $\mathsf{SIR}$ problem for some $t>0$. Now consider the SAPC with $\mathbf{w} = \mathbf{x} \circ \mathbf{y}$. Then, $t\mathbf{x}$ is also the optimal power vector for the SAPC.
+\end{corollary}
+
+From Corollary \ref{approx1ubtheorem}, we deduce that the optimal $\mathsf{SIR}$ allocation in (\ref{sapc}) is a weighted geometric mean of the optimal $\mathsf{SIR}$ in (\ref{maxminsirgeneral1}), where the weights are the Schur product of the Perron and left eigenvectors of $\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}$:
+\begin{equation}
+\prod_l (\mathsf{SIR}_l(t \mathbf{x}))^{x_l y_l} = 1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}),
+\end{equation}
+where $i$ is defined in (\ref{maxminsiri}) and $t = \bar{p}_i/x_i$.
+
+\begin{remark}
+\label{unconstrainedmaxminremark}
+Note that all the links in the network are activated using Algorithm SAPC (and also the max-min $\mathsf{SIR}$ being a special case). As $\bar{p}_l \rightarrow \infty$ for all $l$, using Theorem \ref{maxminSIRcorollary}, the solution computed by Algorithm SAPC tends towards that of the unconstrained max-min $\mathsf{SIR}$ problem with no noise, i.e., (\ref{maxminsirgeneral1}) without the maximum power constraints and with $\mathbf{v}=\mathbf{0}$ as $1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}) \rightarrow 1/\rho(\mathbf{F})$ in Theorem \ref{approx1ubtheorem}. 
+\end{remark}
+
+\subsection{A faster weighted max-min $\mathsf{SIR}$ Algorithm}
+The previous weighted max-min $\mathsf{SIR}$ Algorithm is a (two-timescale) primal-dual algorithm that solves (\ref{maxminwsir}) for any maximum power constraint, but requires a step size that is adapted iteratively. Under the special case when $\bar{p}_l=\bar{p}$ for all $l$, we give the following faster (single timescale and step size free) algorithm to solve (\ref{maxminwsir}), which has the added advantage of backward compatibility with existing CDMA power control.
+\rule{0.49\textwidth}{0.1mm}
+\begin{algorithm}[Equal power weighted Max-min $\mathsf{SIR}$]
+\label{pcalgomaxminfast}
+\hspace{.2in}
+\begin{enumerate}
+\item Update power $\mathbf{p} (k+1)$:
+$$
+p_l(k+1) = \frac{\beta_l}{\mathsf{SIR}_l(\mathbf{p}(k))} p_l(k) \;\; \forall \; l.
+$$
+\item Normalize $\mathbf{p} (k+1)$:
+$$
+p_l(k+1) \leftarrow p_l (k+1) \cdot \bar{p} /\max_j p_j(k+1) \;\; \forall \; l.
+$$
+\end{enumerate}
+\end{algorithm}
+\rule{0.49\textwidth}{0.1mm}
+\begin{theorem}
+\label{fastmaxminsir}
+Starting from any initial point $\mathbf{p}(0)$, $\mathbf{p}(k)$ in Algorithm \ref{pcalgomaxminfast} converges geometrically fast to $\mathbf{x}(\diag(\boldsymbol{\beta})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}))$ (unique up to a scaling constant).
+\end{theorem}
+\begin{remark}
+Interestingly, Step 1 of Algorithm \ref{pcalgomaxminfast} is simply the DPC algorithm in \cite{Foschini93}, where the $l$th user has a virtual $\mathsf{SIR}$ threshold of $\beta_l$. Algorithm DPC can be implemented using a local feedback from the $l$th receiver to the $l$th transmitter after a local $\mathsf{SIR}$ measurement. The only global coordination is computing $\max_j p_j(k+1)$ in Step 2.
+\end{remark}
+Using the numerical simulation model in Example \ref{numerical1}, Figure \ref{fig2} shows that Algorithm \ref{pcalgomaxminfast} converges much faster than Algorithm \ref{pcalgomaxmin}. Algorithm \ref{pcalgomaxmin} however applies to the case where individual power constraint can differ and is thus more general.
+
+\begin{figure}
+\begin{minipage}[t]{1.7in}
+%\begin{minipage}[t]{3.4in}
+\begin{center}
+\includegraphics[width=1.8in]{powerUser1_MaxminSIR.eps}
+%\includegraphics[width=3.5in]
+\end{center}
+\end{minipage}
+%\hfill
+\begin{minipage}[t]{1.7in}
+%\begin{minipage}[t]{3.4in}
+\begin{center}
+\includegraphics[width=1.8in]{sirUser1_MaxminSIR.eps}
+%\includegraphics[width=3.5in]
+\end{center}
+\end{minipage}
+\begin{center}
+(a) \hspace{1.5in} (b)
+\end{center}
+\caption{\scriptsize{Performance comparison of the max-min $\mathsf{SIR}$ Algorithm 2 and 3 in a typical numerical example of ten users with equal power constraint. (a) Evolution of $p_1$ (b) Evolution of $\mathsf{SIR}_1$. }} \label{fig2}
+\end{figure}
+
+\section{Approximability and Performance Guarantees}
+\label{perf}
+In the previous section, we show one possible way to solve (\ref{nonconvex0}) is to approximate $\log(1+\mathsf{SIR})$ by $\log \mathsf{SIR}$ and then use Algorithm SAPC. In this section, we are interested in showing how good this approximation can be. In particular, we will derive a set of sufficient conditions, under which we can compute the approximation ratio of Algorithm SAPC. This technique is also applied to derive the approximation ratio of the weighted max-min $\mathsf{SIR}$ power control (using Algorithm \ref{pcalgomaxmin} or Algorithm \ref{pcalgomaxminfast}). Hence, the algorithms in Section \ref{algorithms} provide a performance guarantee. Conditions under which the algorithms solve (\ref{nonconvex0}) optimally are also given. This illustrates the potential of our algorithms in Section \ref{algorithms} to improve sum rates.
+
+\subsection{Approximation ratio}
+\label{approxratio}
+First, we rewrite (\ref{nonconvex0}) in matrix form as
+\begin{equation}
+\label{nonconvexmatrix0}
+\begin{array}
+[c]{rl}
+\mbox{maximize} & \sum_l w_l \log\left(\left(\left(\mathbf{I}+\mathbf{F}\right)\mathbf{p}+\mathbf{v}\right)_l/\left(\mathbf{F}\mathbf{p}+\mathbf{v}\right)_l\right)\\
+\mbox{subject to} & 0 \le \mathbf{p} \le \mathbf{\bar{p}} \\
+\mbox{variables:} & \mathbf{p}.
+\end{array}
+\end{equation}
+
+Next, we consider a relaxed (but still nonconvex) version of (\ref{nonconvexmatrix0}):
+\begin{equation}
+\label{nonconvexmatrix1}
+\begin{array}
+[c]{rl}
+\mbox{maximize} & \sum_l w_l \log\left(\left(\left(\mathbf{I}+\mathbf{F}\right)\mathbf{p}+\mathbf{v}\right)_l/\left(\mathbf{F}\mathbf{p}+\mathbf{v}\right)_l\right)\\
+\mbox{subject to} & \mathbf{1}^{\trans} \mathbf{p} \le \mathbf{1}^{\trans} \mathbf{\bar{p}} \\
+\mbox{variables:} & \mathbf{p}.
+\end{array}
+\end{equation}
+
+Clearly, the optimal objective in (\ref{nonconvexmatrix1}) upper bounds that in (\ref{nonconvex0}), and if the optimizer of (\ref{nonconvexmatrix1}) satisfies the constraint set of (\ref{nonconvex0}), then it also solves (\ref{nonconvex0}) optimally. We next result characterize the solution of (\ref{nonconvexmatrix1}).
+\begin{lemma}
+\label{relaxtight}
+The constraint in (\ref{nonconvexmatrix1}) is tight at optimality.
+\end{lemma}
+
+%Now using Lemma \ref{someusermaxpower} and \ref{relaxtight}, we see that if $\alpha$ is selected appropriately in (\ref{nonconvexmatrix1}), then solving (\ref{nonconvexmatrix1}) is equivalent to solving (\ref{nonconvexmatrix0}). This is illustrated by the following example.
+%\begin{example}
+%Consider the sum-rate problem for two user. Then the optimal solution to (\ref{nonconvexmatrix0}) corresponds to that of %\ref{nonconvexmatrix1}) for $\alpha=\bar{p}_l/\mathbf{1}^{\trans} \mathbf{\bar{p}}, l=1,2$, or $\alpha=1$, since %$\mathbf{p}^{\star}$ is either $(0, \bar{p}_2)^{\trans}$, $(\bar{p}_1,0)^{\trans}$ or $(\bar{p}_1, \bar{p}_2)^{\trans}$.
+%\end{example}
+
+%In general, it is not possible to know in advance the right $\alpha$ in (\ref{nonconvexmatrix1}), and there may not be a unique mapping between the solution in (\ref{nonconvexmatrix1}) and that in (\ref{nonconvexmatrix0}). Hence, if (\ref{nonconvexmatrix1}) can be solved for a fixed $\alpha$, it is necessary to project the obtained solution into the feasible region of (\ref{nonconvexmatrix0}). This however motivates an iterative method in which $\alpha$ can then be systematically updated to improve the objective function after each projection step. In the following, we illustrate such a method.
+
+Next, we consider solving (\ref{nonconvexmatrix1}), and denote its optimal solution by $\mathbf{\widehat{p}}$. Let $\mathbf{z}=\left(\mathbf{I}+\mathbf{B}\right)\mathbf{p}$ where $\mathbf{B}$ is the matrix:
+\begin{equation}
+\label{matrixB}
+\mathbf{B} = \mathbf{F} + \sum_l \frac{1}{\mathbf{1}^{\trans} \mathbf{\bar{p}}} \mathbf{v} \mathbf{e}_l^{\trans}.
+%B_{ij}=\left\{\begin{array}{cl}
+%    v_i/(\alpha \mathbf{1}^{\trans} \mathbf{\bar{p}}), & \mbox{if} \,\, i = j \\
+%    F_{ij} + v_i/(\alpha \mathbf{1}^{\trans} \mathbf{\bar{p}}), & \mbox{if} \,\, i \ne j
+%       \end{array}\right.
+\end{equation}
+
+Note that $G_{ll}z_l$ is the total received (desired and interfering) signal power plus the additive white noise at the $l$th receiver.
+
+To proceed further, we need to introduce the notion of quasi-invertibility of a nonnegative matrix in \cite{Wong54}, particularly of $\mathbf{B}$ in (\ref{matrixB}), which will be useful in solving (\ref{nonconvexmatrix1}) optimally.
+\begin{definition}[Quasi-invertibility]
+\label{qidef}
+If a quasi-inverse of a square nonnegative matrix $\mathbf{\tilde{B}}$ exists, we write $\mathbf{B}$ for the quasi-inverse of $\mathbf{\tilde{B}}$. Then, $\mathbf{B}-\mathbf{\tilde{B}} = \mathbf{B} \mathbf{\tilde{B}} = \mathbf{\tilde{B}} \mathbf{B}$. Furthermore, $(\mathbf{I} - \mathbf{\tilde{B}})^{-1} = \mathbf{I} + \mathbf{B}$ \cite{Wong54}.
+\end{definition}
+
+\begin{lemma}
+\label{lemmarhoB}
+If $\mathbf{\tilde{B}} \ge \mathbf{0}$, then $\mathbf{\tilde{B}}$ has the Perron-Frobenius eigenvalue
+\begin{equation}
+\label{rhotildeBeqn}
+\rho(\mathbf{\tilde{B}}) = \frac{\rho(\mathbf{B})}{1+\rho(\mathbf{B})},
+\end{equation}
+with the corresponding left and Perron eigenvectors of $\mathbf{B}$.
+\end{lemma}
+
+We next study the existence of $\mathbf{\tilde{B}} \ge \mathbf{0}$, which can interestingly be associated with the $\mathsf{SNR}$ regime. In the case where the maximum power of any particular user is very large, e.g., $\bar{p}_l \rightarrow \infty$ for some $l$ (high $\mathsf{SNR}$ regime) or when interference (off-diagonals of $\mathbf{F}$) is very large, it is deduced in the following that $\mathbf{\tilde{B}}$ does not exist.
+\begin{lemma}
+\label{bhasnotildeb}
+$\mathbf{\tilde{B}} \ge \mathbf{0}$ does not exist when $\mathbf{B} = \mathbf{F}$, where $F_{lj}>0$ for all $l,j$ and $l \ne j$.
+\end{lemma}
+
+However, when $\mathbf{F}=\mathbf{0}$ (no interference) such that $\mathbf{B}=\mathbf{v}\mathbf{1}^{\trans}/(\mathbf{1}^{\trans}\mathbf{\bar{p}})$ or when $\mathbf{1}^{\trans}\bar{p}$ is sufficiently small (low $\mathsf{SNR}$ regime) such that $\mathbf{B} \approx \mathbf{v}\mathbf{1}^{\trans}/(\mathbf{1}^{\trans}\mathbf{\bar{p}})$, then $\mathbf{\tilde{B}}$ always exists, as shown by the following lemma. This result applies in general to a dyadic product of two nonnegative vectors.
+\begin{lemma}
+\label{bhastildeb}
+For any nonnegative vector $\mathbf{v}$, $\mathbf{\tilde{B}}=1/(1+\mathbf{1}^{\trans} \mathbf{v})\mathbf{v}\mathbf{1}^{\trans}$ when $\mathbf{B}=\mathbf{v}\mathbf{1}^{\trans}$.
+\end{lemma}
+
+In the following, we assume that $\mathbf{\tilde{B}}$ exists. By using Lemma \ref{relaxtight}, we can rewrite (\ref{nonconvexmatrix1}) as
+\begin{equation}
+\label{nonconvexmatrix2}
+\begin{array}
+[c]{rl}
+\mbox{maximize} & \sum_l w_l \log\left(z_l/(\mathbf{\tilde{B}}\mathbf{z})_l\right) \\
+\mbox{subject to} & (\mathbf{I} - \mathbf{\tilde{B}}) \mathbf{z} \ge \mathbf{0} \\
+\mbox{variables:} & \mathbf{z}
+\end{array}
+\end{equation}
+
+We note that (\ref{nonconvexmatrix2}) is equivalent to minimizing
+\begin{equation}
+\label{nonconvexmatrix3}
+\prod_l \left((\mathbf{\tilde{B}}\mathbf{z})_l/z_l\right)^{w_l}
+\end{equation}
+subject to $(\mathbf{I} - \mathbf{\tilde{B}}) \mathbf{z} \ge \mathbf{0}$. Since the function (\ref{nonconvexmatrix3}) is plainly homogeneous of degree $0$, we can restrict our attention to the set of $\mathbf{z}$ for which $\mathbf{1}^{\trans}\mathbf{z}+\mathbf{1}^{\trans}\mathbf{\tilde{B}}\mathbf{z} = \mathbf{1}^{\trans}\mathbf{\bar{p}}$.
+
+%Now, (\ref{nonconvexmatrix2}) can be solved efficiently, and thus $\widehat{\mathbf{p}}$ can be determined. Assuming $\mathbf{\tilde{B}} \ge \mathbf{0}$ is given, the following algorithm solves for $\widehat{\mathbf{p}}$.
+%
+%\begin{algorithm}[Power Control Algorithm 2]
+%\label{pcalgo2}
+%\hspace{.2in}
+%\begin{enumerate}
+%\item Update $\mathbf{z}(k+1)$:
+%\begin{equation}
+%z_l(k+1) = w_l / \left( \sum_{j} \frac{w_j \tilde{B}_{jl}}{(\mathbf{\tilde{B}}\mathbf{z}(k))_j} \right) \;\;\; \forall \; l.
+%\end{equation}
+%\item Update $\mathbf{p}(k+1)$:
+%\begin{equation}
+%p_l(k+1) = \frac{\mathsf{SIR}_l(\mathbf{p}(k))}{1+\mathsf{SIR}_l(\mathbf{p}(k))} z_l(k+1) \;\;\; \forall \; l.
+%\end{equation}
+%\item Normalize $\mathbf{p}(k+1)$:
+%\begin{equation}
+%p_l(k+1) = \frac{p_l(k+1)}{\mathbf{1}^{\trans} \mathbf{p}(k+1)} \mathbf{1}^{\trans} \mathbf{\bar{p}} \;\;\; \forall \; l,
+%\end{equation}
+%\end{enumerate}
+%where $k$ indexes discrete time slots. 
+%\end{algorithm}
+%
+%\begin{lemma}
+%Suppose $\mathbf{\tilde{B}} \ge \mathbf{0}$. Then, $\mathbf{p}(k)$ in Algorithm \ref{pcalgo2} converges asymptotically to $\widehat{\mathbf{p}}$.
+%\end{lemma}
+Now, the key step is to exploit the eigenspace of the quasi-inverse $\mathbf{\tilde{B}}$ and connect (\ref{nonconvexmatrix3}) with the Friedland-Karlin inequalities in \cite{Friedland75}, which leads to the following result \cite{Tan09atech}.
+\begin{theorem}
+\label{approx2ubtheorem}
+Suppose $\mathbf{\tilde{B}} \ge \mathbf{0}$. Then, 
+%$\widehat{\mathbf{p}}$ solves (\ref{nonconvex0}) if and only if
+%\begin{equation}
+%\label{rhocompare}
+%\rho(\mbox{diag}(\mathsf{SIR}(\widehat{\mathbf{p}}))\mathbf{B}) \ge \rho(\mbox{diag}(\mathsf{SIR}(\widehat{\mathbf{p}}))(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}^{\trans}_l))
+%\end{equation}
+%for all $l$.
+%
+%Furthermore,
+\begin{equation}
+\label{approx2ub}
+\sum_l w_l \log(1+\mathsf{SIR}_l(\mathbf{\widehat{p}})) \le \Vert \mathbf{w} \Vert^{\mathbf{x}(\mathbf{B}) \circ \mathbf{y}(\mathbf{B})}_{\infty} \log \left( 1 + 1/\rho(\mathbf{B}) \right),
+\end{equation}
+where $\mathbf{x}(\mathbf{B}),\mathbf{y}(\mathbf{B})$ are the left and Perron eigenvectors of $\mathbf{B}$ respectively. 
+
+We have equality in (\ref{approx2ub}) if and only if $\mathbf{w}=\mathbf{x}(\mathbf{B}) \circ \mathbf{y}(\mathbf{B})$. In this case, $\mathbf{\widehat{p}}=(\mathbf{1}^{\trans} \bar{\mathbf{p}}(1+\rho(\mathbf{B}))/\mathbf{1}^{\trans} \mathbf{x}(\mathbf{B}))(\mathbf{I}+\mathbf{B})^{-1} \mathbf{x}(\mathbf{B})$.
+\end{theorem}
+
+Interestingly, the upper bound in (\ref{approx2ub}) can be interpreted as a positive multiple scaling of a rate obtained at a particular $\mathsf{SIR}$, $\gamma^{\star}_l=1/\rho(\mathbf{B})$ for all $l$. More precisely, $\gamma^{\star}_l=1/\rho(\mathbf{B})$ is in fact the total power constrained max-min $\mathsf{SIR}$ whose derivation and the associated power vector are given in the following result.\footnote{We note that a closed-form solution to the optimization problem in (\ref{maxminsirtotalpower}) was first obtained in \cite{Yang98}, whose solution is however based on a nonnegative (increased dimension) matrix totally different from $\mathbf{B}$.}
+\begin{lemma}
+\label{maxminsirtotalpowerlemma}
+The optimal objective and solution of:
+\begin{equation}
+\label{maxminsirtotalpower}
+\begin{array}
+[c]{rl}
+\mbox{maximize} & \displaystyle \min_l \mathsf{SIR}_l(\mathbf{p}) \\
+\mbox{subject to} & \mathbf{1}^{\trans} \mathbf{p} \le \mathbf{1}^{\trans} \bar{\mathbf{p}}, \\
+\mbox{variables:} & \mathbf{p}
+\end{array}
+\end{equation}
+is given by $1/\rho(\mathbf{B})$ and $(\mathbf{1}^{\trans} \bar{\mathbf{p}}/\mathbf{1}^{\trans} \mathbf{x}(\mathbf{B})) \mathbf{x}(\mathbf{B})$ respectively.
+\end{lemma}
+
+Since $\log \left( 1 + 1/\rho(\mathbf{B}) \right) \le \sum_l w_l \log(1+\mathsf{SIR}_l(\mathbf{\widehat{p}}))$, $1/\Vert \mathbf{w} \Vert^{\mathbf{x}(\mathbf{B}) \circ \mathbf{y}(\mathbf{B})}_{\infty}$ in Theorem \ref{approx2ubtheorem} can be viewed as an approximation ratio of the total power constrained max-min $\mathsf{SIR}$ method, i.e., (\ref{maxminsirtotalpower}) achieves at least a fraction $1/\Vert \mathbf{w} \Vert^{\mathbf{x}(\mathbf{B}) \circ \mathbf{y}(\mathbf{B})}_{\infty}$ of the global optimal solution of (\ref{nonconvexmatrix1}).
+
+We next state our main result in the following theorem.
+\begin{theorem}
+\label{mainthm}
+If $\mathbf{\tilde{B}}  \ge \mathbf{0}$ and $\mathbf{p}^{\star}$ is the optimal solution to (\ref{nonconvex0}), then
+\begin{equation}
+\label{mainthmeqn}
+\sum_l w_l \log(1+\mathsf{SIR}_l(\mathbf{p}^{\star})) \le \Vert \mathbf{w} \Vert^{\mathbf{x} \circ \mathbf{y}}_{\infty} \log \left( 1 + 1/\rho(\mathbf{B})\right),
+\end{equation}
+where $\mathbf{x},\mathbf{y}$ are the Perron and left eigenvectors of $\mathbf{B}$ respectively. 
+\newline
+Equality is achieved if the parameters of all users are symmetric, i.e., $\mathbf{F}=\mathbf{F}^{\trans}$, and $\bar{p}_l = \bar{p}_j=\bar{p}$ and $v_l = v_j$ for all $l \ne j$ and $\mathbf{w}=\mathbf{x} \circ \mathbf{x}$. In this case, $\mathbf{p}^{\star}=\mathbf{x}(\mathbf{F}+(1/\bar{p})\mathbf{v}\mathbf{e}_i^{\trans})$ (unique up to a scaling constant).
+\end{theorem}
+
+\begin{remark}
+The achievability part in Theorem \ref{mainthm} illustrates a sufficient condition under which the max-min $\mathsf{SIR}$ in (\ref{maxminsirgeneral1}) optimally solves (\ref{nonconvex0}).
+\end{remark}
+
+Based on Theorem \ref{mainthm}, we now state the approximation ratio provided by the weighted max-min $\mathsf{SIR}$ (with $\boldsymbol{\beta}=\mathbf{w}$) using Algorithm \ref{pcalgomaxmin} to solve (\ref{nonconvex0}) approximately. 
+%\begin{theorem}
+%\label{maxminsirapproxratio}
+%Suppose $\mathbf{\tilde{B}} \ge \mathbf{0}$. Let
+%\begin{equation}
+%\eta = \frac{\log(1+1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}))}{\Vert \mathbf{w} \Vert^{\mathbf{x}(\mathbf{B}) \circ \mathbf{y}(\mathbf{B})}_{\infty} \log(1+1/\rho(\mathbf{B}))},
+%\end{equation}
+%where $i$ is defined in (\ref{maxminsiri}). Then, $\eta$ is an approximation ratio to (\ref{nonconvex0}) by solving the constrained max-min $\mathsf{SIR}$ problem (\ref{maxminsirgeneral1}), i.e., 
+%\begin{equation}
+%\eta \sum_l w_l \log(1+\mathsf{SIR}(\mathbf{p}^{\star})) \le \log\left(1+\frac{1}{\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})}\right),
+%\end{equation}
+%where $\mathbf{p}^{\star}$ is the optimal solution to (\ref{nonconvex0}).
+%\end{theorem}
+
+\begin{theorem}
+\label{maxminwsirapproxratio}
+Suppose $\mathbf{\tilde{B}} \ge \mathbf{0}$. Let
+\begin{equation}
+\eta = \frac{\sum_l w_l \log(1+w_l/\rho(\mbox{diag}(\mathbf{w})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})))}{\Vert \mathbf{w} \Vert^{\mathbf{x}(\mathbf{B}) \circ \mathbf{y}(\mathbf{B})}_{\infty} \log(1+1/\rho(\mathbf{B}))},
+\end{equation}
+where $i$ is given in (\ref{maxminwsiri}).
+
+Then, $\eta$ is an approximation ratio to (\ref{nonconvex0}) by solving (\ref{maxminwsir}).
+\end{theorem}
+
+Similarly, the approximation ratio of Algorithm SAPC in solving (\ref{nonconvex0}) can be stated as follows. 
+\begin{theorem}
+\label{sapcapproxratio}
+Suppose $\mathbf{\tilde{B}} \ge \mathbf{0}$. Let
+\begin{equation}
+\eta = \frac{\sum_l w_l \log(1+\mathsf{SIR}(\mathbf{p}^{\prime}))}{\Vert \mathbf{w} \Vert^{\mathbf{x}(\mathbf{B}) \circ \mathbf{y}(\mathbf{B})}_{\infty} \log(1+1/\rho(\mathbf{B}))},
+\end{equation}
+where $\mathbf{p}^{\prime}$ is the optimal solution to (\ref{sapc}). Then, $\eta$ is an approximation ratio to (\ref{nonconvex0}) by solving (\ref{sapc}).
+\end{theorem}
+
+\subsection{General approximability}
+\label{genapprox}
+The results in Section \ref{approxratio} depend on the existence of a nonnegative $\tilde{\mathbf{B}}$. If this sufficient condition is not satisfied, we nevertheless show how the results in Section \ref{approxratio} can still be used to construct useful upper bounds to (\ref{nonconvex0}). First, we define a transmission configuration as a set of links $\mathcal C=\{l\,|\,l=1,\dots,L\}$ with $|\mathcal{C}|\le L$. Users in $\mathcal{C}$ transmit with positive power. In general, a transmission configuration can be used to construct a scheduling policy in which users that belong to $\mathcal{C}$ solve (\ref{nonconvex0}) using power control, whereas users that belong to $\setminus \mathcal{C}$ transmit one at a time. Clearly, $|\mathcal{C}|+|\setminus \mathcal{C}|=L$. For example, when $\mathbf{\tilde{B}}\ge\mathbf{0}$ and all users have positive optimal power, we need only consider $\mathcal{C}$ such that $|\mathcal{C}|=L$. A scheduling policy determines how users in $\mathcal{C}$ and $\setminus \mathcal{C}$ are time-shared in a time-division multiple access manner. When there are $L$ users, there are
+\begin{equation}
+\sum_{l=1}^{L-2} {L \choose l} + 2
+\end{equation}
+possible transmission configurations. Now, for any transmission configuration $\mathcal{C}$ and any $\mathbf{p}$, we have
+\begin{equation}
+\label{upperboundgen}
+\begin{array}
+[c]{rl}
+& \displaystyle  \sum_{l=1}^{L} w_l \log(1+\mathsf{SIR}_l(\mathbf{p})) \le \sum_{l \in \mathcal{C}} w_l \log(1+\mathsf{SIR}_l(\mathbf{p})) \\
+& + \sum_{l \in \setminus \mathcal{C}} w_l \log(1+ p_l/v_l),
+\end{array}
+\end{equation}
+where $\mathsf{SIR}_l(\mathbf{p}), l \in \mathcal{C}$ in the first summand on the right-hand side of (\ref{upperboundgen}) contains only interference terms coming from users in $\mathcal{C}$. Thus, it can be deduced that
+\begin{equation}
+\begin{array}
+[c]{rl}
+& \displaystyle \sum_{l=1}^{L} w_l \log(1+\mathsf{SIR}_l(\mathbf{p}^{\star})) \le \displaystyle \max_{\mathbf{0} \le \mathbf{p} \le \mathbf{\bar{p}}} \sum_{l \in \mathcal{C}} w_l \log(1+\mathsf{SIR}_l(\mathbf{p})) \\
+& + \sum_{l \in \setminus \mathcal{C}} w_l \log(1+ \bar{p}_l/v_l).
+\end{array}
+\end{equation}
+
+Let $\mathbf{B}_{\mathcal{C}}$ denote a submatrix obtained from $\mathbf{B}$ by deleting those rows and columns whose indices belong to $\setminus \mathcal{C}$. If $\mathbf{B}_{\mathcal{C}}$ is a quasi-inverse of a nonnegative matrix, we denote it as $\mathbf{\tilde{B}}_{\mathcal{C}}$. Hence, for any transmission configuration $\mathcal{C}$, if $\mathbf{\tilde{B}}_{\mathcal{C}} \ge \mathbf{0}$, we can use the previous results to deduce the following bound
+\begin{equation}
+\begin{array}
+[c]{rl}
+& \sum_{l=1}^{L} w_l \log(1+\mathsf{SIR}_l(\mathbf{p}^{\star})) \\
+& \le \displaystyle \max_{l \in \mathcal{C}} \frac{w_l}{(\mathbf{x}(\mathbf{B}_{\mathcal{C}}) \circ \mathbf{y}(\mathbf{B}_{\mathcal{C}}))_l} \log\left(1+\frac{1}{\rho(\mathbf{B}_{\mathcal{C}})}\right) + \\
+& \sum_{l \in \setminus \mathcal{C}} w_l \log(1+ G_{ll}\bar{p}_l/n_l).
+\end{array}
+\end{equation}
+
+Subject to the existence of quasi-inverses, the tightest upper bounds to (\ref{nonconvex0}) can be found by searching all $\sum_{l=1}^{L-2} {L \choose l} + 2$ transmission configurations. Note that if $\mathbf{\tilde{B}} \ge \mathbf{0}$, then $\mathbf{\tilde{B}}_{\mathcal{C}} \ge \mathbf{0}$ for any $\mathcal{C}$. On the other hand, as $|\mathcal{C}|$ gets smaller, then it is more likely that $\mathbf{\tilde{B}}_{\mathcal{C}} \ge \mathbf{0}$, because, the second summand in a submatrix of (\ref{matrixB}) tends to dominate the first summand.
+
+\subsection{Implications for wireless networks}
+\label{schedpc}
+In this section, we examine the implications of our results for practical interference-limited networks such as the IEEE 802.11b ad hoc network. We also consider the on-off scheduling algorithm, which finds the power vector that maximizes sum rates in which users either transmit at maximum or zero power, as a baseline for comparison with SAPC and max-min $\mathsf{SIR}$. Table \ref{table:adhoc} records a typical numerical example for a ten-user network, where the maximum power is set as $33$mW and $1$W (the largest possible value allowed in IEEE 802.11b). We set $\mathbf{w}=\mathbf{x}(\mathbf{B}) \circ \mathbf{y}(\mathbf{B})$. 
+
+For each maximum power constraint, we average the percentage of instances where $\mathbf{\tilde{B}} \ge \mathbf{0}$, the sum rates and the approximation ratios over $10,000$ random instances. In the case where $\mathbf{\tilde{B}} \ge \mathbf{0}$ is not satisfied, the tightest upper bound using the general approximability technique in Section \ref{genapprox} is computed and the approximation ratios of SAPC, weighted max-min $\mathsf{SIR}$ (with $\boldsymbol{\beta}=\mathbf{w}$) and on-off scheduling are computed. As shown in Table \ref{table:adhoc}, the sufficient condition $\mathbf{\tilde{B}} \ge \mathbf{0}$ occurs over a large proportion of time, and the relatively large approximation ratios using SAPC and max-min $\mathsf{SIR}$ indicate the usefulness of using power control to maximize sum rates in a typical IEEE 802.11b network. 
+
+\begin{table}
+\begin{center}
+\begin{tabular}{||c|c|c|c|c||} \hline
+Parameter  & Avg. \% & SAPC &
+Max-min & On-off \\
+\;  & of $\mathbf{\tilde{B}} \ge \mathbf{0}$ & $(\eta)$ & $\mathsf{SIR}$ $(\eta)$ & sched. $(\eta)$ \\
+\hline \hline 
+$\bar{p}_l=33\mbox{mW} \, \forall l$ & 99 &  0.97  &  0.99    &   0.89   \\
+$\mathsf{SNR}=7$dB     &    &  (0.93) &  (0.96) & (0.84)   \\ \hline
+$\bar{p}_l=1\mbox{W} \, \forall l$  &  65  &   0.87   &  0.91   &    0.87   \\
+$\mathsf{SNR}=40$dB & \, &  (0.82)  &   (0.83)    &  (0.82)   \\    \hline
+\hline
+\end{tabular}
+\caption{A typical numerical example in a ten-user network with two maximum power constraint settings: $\bar{p}_l=33$mW or $\bar{p}_l=1$W for all $l$. The percentage of instances where $\mathbf{\tilde{B}} \ge \mathbf{0}$ is recorded. Recorded in parentheses, the approximation ratios for weighted max-min $\mathsf{SIR}$ (with $\boldsymbol{\beta}=\mathbf{w}$) and SAPC are computed using Theorem \ref{maxminwsirapproxratio} and \ref{sapcapproxratio} respectively, and the approximation ratio of on-off scheduling is computed using Theorem \ref{mainthm}. Also shown, without parentheses in each cell, are the actual ratios of the achieved rates by the respective algorithms to the global optimal sum rates.}
+\label{table:adhoc}
+\end{center}
+\end{table}
+
+\section{Geometry of power controlled rate region}
+\label{wgtsumratesection}
+We first present an equivalent formulation of the weighted sum rate maximization problem, which enables us to derive the exact achievable rate region of (\ref{nonconvex0}). This allows us to investigate the geometry of the achievable rate region in different $\mathsf{SNR}$ regimes. Our result indicates that if the interference channel gains are sufficiently small or if the maximum powers are sufficiently small, then the rate region is convex.
+
+As a first step to deriving the rate region, we show that optimizing power as in (\ref{nonconvex0}) is equivalent to optimizing $\mathsf{SIR}$:
+\begin{theorem}
+\label{sumratetheorem}
+Consider the following maximization problem:
+\begin{equation}
+\label{nonconvex1}
+\begin{array}
+[c]{rl}
+\mbox{maximize} & \sum_l w_l \log(1+\gamma_l)\\
+\mbox{subject to} &  \rho(\mbox{diag}(\boldsymbol{\gamma})(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}^{\trans}_l)) \le 1 \,\;\; \forall \, l, \\
+\mbox{variables:} & \gamma_l, \,\;\; \forall \, l.
+\end{array}
+\end{equation}
+
+The optimal $\mathsf{SIR}$ vector $\boldsymbol{\gamma}^{\star}$ in (\ref{nonconvex1}) is related to the optimal power vector $\mathbf{p}^{\star}$ in (\ref{nonconvex0}) as follows:
+\begin{equation}
+\mathbf{p}^{\star} = \left( \mathbf{I} - \mbox{diag}(\boldsymbol{\gamma}^{\star})\mathbf{F} \right)^{-1} \mbox{diag}(\boldsymbol{\gamma}^{\star})\mathbf{v}.
+\end{equation}
+
+Further, there exists a link $i$ such that 
+\begin{equation} 
+\label{rhoequal1}
+\rho(\mbox{diag}(\boldsymbol{\gamma}^{\star})(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}^{\trans}_l)) \le \rho(\mbox{diag}(\boldsymbol{\gamma}^{\star})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}^{\trans}_i)) = 1
+\end{equation} 
+for all $l$. 
+\end{theorem}
+
+\begin{remark}
+From (\ref{nonconvex1}), we deduce that $\mathbf{p}^{\star}$ can be interpreted as the Perron eigenvector (unique up to a scaling constant) of a nonnegative matrix $\mbox{diag}(\boldsymbol{\gamma})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}^{\trans}_i)$ for some $i$ with the Perron-Frobenius eigenvalue of 1. Clearly, $\boldsymbol{\gamma}^{\star} > \mathbf{0}$ if and only if $\mbox{diag}(\boldsymbol{\gamma})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}^{\trans}_i)$ is irreducible.
+\end{remark}
+
+%\begin{remark}
+%\label{restrictedconstaintremark}
+%Now, since 
+%\begin{equation}
+%\label{restrictconstraint}
+%\rho(\mbox{diag}(\boldsymbol{\gamma})\mathbf{A}) \le \max_l \gamma_l \; \rho(\mathbf{A})
+%\end{equation}
+%for any irreducible nonnegative matrix $\mathbf{A}$ \cite{Friedland75}, we can use (\ref{restrictconstraint}) to replace all the nonconvex constraints in (\ref{nonconvex1}) as convex constraints, and solve (\ref{nonconvex1}) suboptimally. Regardless of the weight vector $\mathbf{w}$, the suboptimal solution obtained is $\boldsymbol{\gamma}^{\star}=(1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}))\mathbf{1}$, because the objective function is strictly increasing and $\boldsymbol{\gamma} = (1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}))\mathbf{1}$ is the largest possible value over the restricted constraints using (\ref{restrictconstraint}). 
+%\end{remark}
+
+%\begin{lemma}
+%\label{maxminsirsolvesnonconvex}
+%If $\gamma_l^{\star}=\gamma_j^{\star}$ for all $j \ne l$, then 
+%\begin{equation}
+%\gamma_l^{\star}=1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}),
+%\end{equation}
+%where $i$ is defined in (\ref{maxminsiri}), and $\mathbf{w}$ must satisfy
+%\begin{equation}
+%\mathbf{w}=\mathbf{x}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}) \circ \mathbf{y}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})
+%\end{equation}
+%and $\sum_{j \ne l} w_j > w_l$ for each $l$ such that the $l$th diagonal of $\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}$ is zero. In this case, $\mathbf{p}^{\star}=\mathbf{x}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$ (unique up to a scaling constant).
+%\end{lemma}
+%
+%\begin{remark}
+%Similar to the proof of Theorem \ref{maxminsirtheorem}, the proof of Lemma \ref{maxminsirsolvesnonconvex} is also based on the Friedland-Karlin inequalities and its extension \cite{Friedland75,Friedland08}.
+%\end{remark}
+%
+%Interestingly, Theorem \ref{sumratetheorem} establishes that the Max-min $\mathsf{SIR}$ Algorithm can solve (\ref{nonconvex0}) optimally under the condition stipulated on $\mathbf{w}$. Recall that Corollary \ref{approx1ubtheorem} relates two suboptimal power allocation strategies that are solvable in polynomial time. We now relate Lemma \ref{maxminsirsolvesnonconvex} and Corollary \ref{approx1ubtheorem} together to highlight the structural property of the max-min $\mathsf{SIR}$ and SAPC power allocation in solving (\ref{nonconvex0}). In particular, it is necessary that $\mathbf{w}=\mathbf{x}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}) \circ \mathbf{y}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$, where $i$ satisfies (\ref{maxminsiri}) and $\sum_{j \ne l} w_j > w_l$ for each $l$ such that the $l$th diagonal of $\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}$ is zero, in order that (\ref{sapc}) yields $\mathbf{p}^{\star}=\mathbf{x}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$ of (\ref{nonconvex0}) (unique up to a scaling constant). In Section \ref{perf}, we will show yet another structural property in the form of approximation algorithm (under a set of sufficient conditions on the problem parameters) that illustrates Algorithm Max-min $\mathsf{SIR}$ or SAPC solves (\ref{nonconvex0}) as a special case (see Theorem \ref{mainthm}). 
+
+One of the advantages gained through (\ref{nonconvex1}) is to characterize the power controlled rate region, which is defined as all possible points $r_l=\log(1+\mathsf{SIR}_l(\mathbf{p}))$ satisfying the constraints in (\ref{nonconvex0}) for all $l$ obtained by varying $\mathbf{w}$. We next investigate the geometry of the rate region using power control and time-sharing as the $\mathsf{SNR}$ of each user varies. 
+
+\begin{theorem}
+\label{Luserrateregioncorollary}
+The achievable rate region $\cal{R}$ using power control only is given by
+\begin{equation}
+\label{Luserrateregion}
+\mathbf{r} \in \mbox{$\cal{R}$} : 
+\rho(\mbox{diag}(\exp (\mathbf{r}) - \mathbf{1})(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}^{\trans}_l)) \le 1
+\end{equation}
+The achievable rate region $\cal{R}$ using power control and time-sharing is given by $\mbox{Conv}\{ \mathcal{R} \}$,
+%\begin{equation}
+%\label{convLuserrateregion}
+%\mbox{Conv}\{ \mathbf{r} \in \mbox{$\cal{R}$} : 
+%\rho(\mbox{diag}(\exp (\mathbf{r}) - \mathbf{1})(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}^{\trans}_l)) \le 1 \}
+%\end{equation}
+where $\mbox{Conv}$ denotes the convex hull operation.
+\end{theorem}
+
+\begin{remark}
+From Theorem \ref{Luserrateregioncorollary}, we deduce that $\mbox{Conv}\{ \mathbf{r} \in \mbox{$\cal{R}$} : \rho(\mbox{diag}(\exp (\mathbf{r})-\mathbf{1})\mathbf{F}) \le 1 \}$ is the achievable rate region in the high $\mathsf{SNR}$ regime (as $\mathbf{\bar{p}} \to \infty$).
+\end{remark}
+
+In general, computing $\mathcal{R}$ and $\mbox{Conv}\{\mathcal{R}\}$ are difficult. The following example illustrates the use of (\ref{nonconvex1}) in Theorem \ref{sumratetheorem} when $L=2$.
+
+\begin{example}
+When $L=2$, (\ref{nonconvex1}) simplifies as
+\begin{equation}
+\label{nonconvex_2users}
+\begin{array}
+[c]{rl}
+\mbox{maximize} & w_1 \log(1+\gamma_1)+w_2 \log(1+\gamma_2)\\
+\mbox{subject to} &  v_1 \gamma_1 + (F_{12}v_2 + \bar{p}_1 F_{12}F_{21} ) \gamma_1 \gamma_2 \le \bar{p}_1, \\
+&  v_2 \gamma_2 + (F_{21}v_1 + \bar{p}_2 F_{12}F_{21} ) \gamma_1 \gamma_2 \le \bar{p}_2, \\
+\mbox{variables:} & \gamma_1, \; \gamma_2 .
+\end{array}
+\end{equation}
+
+When $L=2$ and $w_1=w_2$, one of the three vectors: $(\bar{p}_1,0)^{\trans}$, $(0,\bar{p}_2)^{\trans}$ or $(\bar{p}_1,\bar{p}_2)^{\trans}$ solves (\ref{nonconvex0}) optimally \cite{Ebrahimi06,Gesbert07}. Using (\ref{nonconvex_2users}), we can further determine a priori the user that transmits at maximum power. In particular, if $v_1/\bar{p}_1 \le v_2/\bar{p}_2$ and $F_{12}v_2/\bar{p}_1 \le F_{21}v_1/\bar{p}_2$, then the first user transmits at maximum power. 
+%Hence, if both users have the same maximum $\mathsf{SNR}$, i.e., $G_{1,1}\bar{p}_1/n_1 = G_{2,2}\bar{p}_2/n_2$, then if $F_{12}v_2/\bar{p}_1 \le F_{21}v_1/\bar{p}_2$, the first user definitely transmits at maximum power. Otherwise, the second user definitely transmits at maximum power.
+
+When $L=2$, Theorem \ref{Luserrateregioncorollary} simplifies as follows.
+\begin{corollary}
+\label{rateregion}
+When $L=2$, the achievable rate region $\cal{R}$ using power control only is given by
+\begin{equation}
+\label{2userrateregion}
+\begin{array}[c]{rl}
+(r_1,r_2) \in \mbox{$\cal{R}$} : 
+r_1 \le & \min \{ \; \log\left( 1+\frac{\bar{p}_2/(e^{r_2}-1)-v_2}{F_{21}(F_{12}\bar{p}_2+v_1)} \right) , \; \\
+& \log\left( 1+\frac{\bar{p}_1}{F_{12}(F_{21}\bar{p}_1+v_2)(e^{r_2}-1)+v_1} \right) \}.
+\end{array}
+\end{equation}
+Furthermore, as $\bar{p}_l \rightarrow \infty$ for all $l$, the asymptotic rate region $\cal{\bar{R}}$ is given by 
+\begin{equation}
+\label{rateregionupperbound}
+(r_1,r_2) \in \cal{\bar{R}} : 
+\mbox{$r_1 \le  \log\left( 1+\frac{1}{F_{12}F_{21}(e^{r_2}-1)} \right).
+$}
+\end{equation}
+\end{corollary}
+\end{example}
+We note that (\ref{2userrateregion}) is independently and contemporaneously derived in \cite{Charafeddine07} using a different approach.
+
+%From (\ref{nonconvex_2users}), in the high $\mathsf{SNR}$ regime, if $F_{12}F_{21}\gamma^{\star}_1\gamma^{\star}_2 = 1$ or $\rho(\mathbf{I}-\mbox{diag}(\boldsymbol{\gamma}^{\star})\mathbf{F})=1$ at optimality, then both links transmit at full power. The asymptotic maximum rate of each user is %then given by (See Appendix \ref{2x2asympthruputproof}):
+%then given by (See \cite{Tan09atech}):
+%\begin{equation}
+%\label{2x2asympthruput}
+%\log\left(1+\frac{1}{\sqrt{F_{12}F_{21}}}\right) \hspace{.2in}\mbox{or}\hspace{.2in}  \log\left(1+\frac{1}{\rho(\mathbf{F})}\right),
+%\end{equation}
+%which is shown as the point on the line $\rho(\mathbf{I}-\mbox{diag}(\boldsymbol{\gamma}^{\star})\mathbf{F})=1$ in Figure \ref{2x2RateRegion}. Hence, we deduce that time-sharing is optimal in the high $\mathsf{SNR}$ regime.
+Figure \ref{2x2RateRegion} illustrates how the rate region is shaped by interference when $L=2$ in different $\mathsf{SNR}$ regimes. As observed, the rate region is nearly convex in the low $\mathsf{SNR}$ regime and becomes highly nonconvex in the high $\mathsf{SNR}$ regime. Intuitively, this means that time-sharing is optimal in the high $\mathsf{SNR}$ regime.
+
+\begin{figure}
+%\begin{center}
+    \centering
+\psfrag{r1}[][]{\hspace{.2in} \footnotesize  $r_1$}
+\psfrag{r2}[][]{\hspace{.2in} \footnotesize  $r_2$}        
+\psfrag{x1=0.8, x2=0.5}[][]{\hspace{.2in} \footnotesize  $\bar{p}_1=0.8,\bar{p}_2=0.5$}
+\psfrag{x1=1.8, x2=100.5}[][]{\hspace{.2in} \footnotesize  $\bar{p}_1=1.8,\bar{p}_2=100.5$}
+\psfrag{x1=11.8, x2=132.5}[][]{\hspace{.2in} \footnotesize   $\bar{p}_1=11.8,\bar{p}_2=132.5$}
+\psfrag{x1=151.8, x2=182.5        }[][]{\hspace{.2in} \footnotesize  $\bar{p}_1=151.8,\bar{p}_2=182.5$}
+\psfrag{det}[][]{\hspace{.2in} \footnotesize   $\rho( \mathbf{I}-\mbox{diag}(e^{\mathbf{r}}-1)\mathbf{F})=1$}
+\psfrag{asym}[][]{\hspace{.5in} \footnotesize  $\log (1+1/\rho(\mathbf{F}))$}
+\includegraphics[scale=.35]{testing123_January2008.eps}
+%\includegraphics[scale=.3]{2x2RateRegionWithPmaxAsympThruPut.eps}
+\caption{\label{2x2RateRegion} Achievable rate region for a 2-user interference-limited channel. The channel gains are given by $G_{11}=0.73,G_{12}= 0.04,G_{21}=0.03,G_{22}=0.89$ and the AWGN is 0.1. The maximum power for User 1 and User 2 are varied and are set as $\mathbf{\bar{p}}=[0.8, \; 0.5]^{\trans}$ with $\mathsf{SNR}=[7.66, \; 6.48]^{\trans}$ in dB, $\bar{\mathbf{p}}=[1.8, \; 100.5]^{\trans}$ with $\mathsf{SNR}=[11.19, \; 29.52]^{\trans}$ in dB, $\bar{\mathbf{p}}=[11.8, \; 132.5]^{\trans}$ with $\mathsf{SNR}=[19.35, \; 30.72]^{\trans}$ in dB and $\bar{\mathbf{p}}=[151.8, \; 182.5]^{\trans}$ with $\mathsf{SNR}=[30.45, \; 32.11]^{\trans}$ in dB.}
+%\end{center}
+\end{figure}
+
+%\section{Joint Scheduling and Power Control}
+%\label{schedpc}
+%In this section, we describe a joint scheduling and power control protocol for wireless network that reuses the existing Request-to-send/Clear-to-send (RTC/CTS) handshaking mechanism in the IEEE 802.11 contention resolution protocol. The RTS/CTS mechanism distributedly determines channel access and avoids the well-known hidden terminal problem. To avoid interfering with the ongoing transmission, all nodes that hear an RTS or CTS message defer transmitting till the ongoing transmission is over.
+%
+%\cite{Holland01}
+%
+%We assume that a receiver hears an RTS when the $\mathsf{SIR}$ of the RTS is above a threshold and other nodes hear a CTS when the $\mbox{SIR}$ of the CTS is above another threshold. If these thresholds are chosen too low, then later transmissions may interrupt existing transmissions while high thresholds will lead to inefficiency.
+%
+%A time slot consists of two phases:
+%\begin{enumerate}
+%\item Scheduling phase: RTS/CTS packet exchange using $\mathbf{p}=\mathbf{\bar{p}}$ for interference reduction,
+%\item Power control phase: data packet transmission using $\mathbf{p} \in [\mathbf{0},\mathbf{\bar{p}}]$ for rate maximization.
+%\end{enumerate}
+%
+%The scheduling phase specifies who will transmit at when and to whom. The goal is to ensure that interference is low enough for all the activated links to employ power control in the second phase. In a sense, the scheduled transmitter-receiver pairs aim to satisfy $\mathbf{\tilde{B}} \ge \mathbf{0}$.
+%The power control phase then implements any of the fast algorithms in Section \ref{algorithms}, i.e., the SAPC and the weighted max-min $\mathsf{SIR}$, to maximize the total sum rates.
+
+\section{Conclusion}
+Sum rate maximization is a hard problem in power control and any cross-layer design involving transmit power. But a variety of approximation ratios can be obtained through two related problems: $\mathsf{SIR}$ approximation power control (SAPC) and max-min $\mathsf{SIR}$ optimization. These two problems have also been extensively studied before, and now we have faster algorithms for them with geometric convergence rate, often independent of stepsize. These results are derived based on new techniques from nonnegative matrix theory. 
+
+Even if the sum rate maximization problem is solved exactly, the resulting rate region may still need to be convexified by scheduling if it is nonconvex. Extending our methodology, we characterize the rate region and its convexity property. However, how to control both the times to transmit and the power levels during transmission remains unknown. Combining our results with IEEE 802.11 network simulations, we shed light on this open problem. 
+
+%We looked at the use of power control for sum rate maximization. We first investigated the SAPC problem and the max-min $\mathsf{SIR}$ problem, which are two well-known power control in the literature. We showed that they are intimately related and fast algorithms with geometric convergence rate can be obtained. These algorithms were then used to solve the sum rate maximization problem with their performance characterized by approximation ratios. The implication is that, given a set of users, power control alone has the potential to improve sum rates. Lastly, we examined this implication in the context of practical interference-limited networks such as the IEEE 802.11 ad hoc network using extensive numerical simulations. How to optimally choose the user schedule and perform power control in IEEE 802.11 network is a subject of further interests.
+
+\appendix
+%
+%\subsection{Proof of Theorem \ref{pcalgo1fixedpoint}}
+%\begin{proof}
+%The objective function in (\ref{sapc}) can be made convex by a change-of-variable technique: Let $\tilde{p}_l = \log p_l$ for all $l$. First, ignoring the maximum power constraints in (\ref{sapc}), we let $\partial (\sum_l w_l \log \mathsf{SIR}_l(\mathbf{\tilde{p}}))/\partial \tilde{p}_l=0$ for all $l$ to deduce
+%\begin{equation}
+%\label{sapcgrad}
+%e^{\tilde{p}_l} = w_l/\left(\sum_{j \ne l} \frac{w_j F_{jl}}{\sum_{i \ne j} F_{ij}e^{\tilde{p}} + v_j } \right) \;\; \forall \, l.
+%\end{equation}
+%Clearly, $\tilde{p}^{\prime}_l = \log p^{\prime}_l$ for all $l$. Since $\mathbf{p}^{\prime} \le \mathbf{\bar{p}}$, we state the following lemma to show that the KKT conditions of (\ref{sapc}) are equivalent to projecting (\ref{sapcgrad}) to $[0,\bar{p}_l]$ for all $l$.
+%
+%\begin{lemma}[Box-constrained projection \cite{Wright99}, pp. 520]
+%\label{reducedgrad}
+%Consider the problem $\max_{\mathbf{0} \le \mathbf{p} \le \mathbf{\bar{p}}} f(\mathbf{p})$. The KKT conditions are equivalent to the condition $P_{[\mathbf{0}, \mathbf{\bar{p}}]} \partial f(\mathbf{p})/\partial \mathbf{p} = \mathbf{0}$, where $P_{[\mathbf{0}, \mathbf{\bar{p}}]}\mathbf{g}$ is the projection of the vector $\mathbf{g}$ onto the box $[\mathbf{0}, \mathbf{\bar{p}}]$ defined by $(P_{[\mathbf{0}, \mathbf{\bar{p}}]}\mathbf{g})_l=\min\{0,g_l\}$ if $p_l=0$, $(P_{[\mathbf{0}, \mathbf{\bar{p}}]}\mathbf{g})_l=g_l$ if $p_l \in (0,\bar{p}_l)$ and $(P_{[\mathbf{0}, \mathbf{\bar{p}}]}\mathbf{g})_l=\max\{0,g_l\}$ if $p_l=\bar{p}_l$.
+%\end{lemma}
+%
+%Applying Lemma \ref{reducedgrad} to (\ref{sapc}) in the $\tilde{\mathbf{p}}$ domain and then converting it back to the $\mathbf{p}$ domain, we deduce
+%\begin{equation}
+%\label{sapcfixedpoint}
+%p^{\prime}_l = \min \left\{ w_l/\left(\sum_{j \ne l} \frac{w_j F_{jl}}{(\mathbf{F}\mathbf{p}^{\prime})_j + v_j } \right), \bar{p}_l \right\},
+%\end{equation}
+%where $p^{\prime}_l$ is unique since $\sum_l w_l \log \mathsf{SIR}_l(\mathbf{\tilde{p}})$ is strictly convex in $\mathbf{\tilde{p}}$ and the transformation $\tilde{p}_l=\log p_l$ is one-to-one.
+%
+%Next, we establish the convergence of Algorithm SAPC. The convergence proof of (\ref{pcalgo1eqn}) is based on the standard interference function approach \cite{Yates95}, which is summarized as follows. 
+%\begin{definition}[Standard interference function]
+%$I(\mathbf{p})$ is a standard interference function if it satisfies \cite{Yates95}:
+%\begin{enumerate}
+%\item (monotonicity) $I(\mathbf{p}^{\prime})>I(\mathbf{p})$ if $\mathbf{p}^{\prime}>\mathbf{p}$.
+%\item (scalability) Suppose $\beta>1$. Then, $\beta I(\mathbf{p})>I(\beta \mathbf{p})$.
+%\end{enumerate}
+%\end{definition}
+%
+%\begin{definition}
+%A standard interference function $I(\mathbf{p})$ is feasible if $\mathbf{p} \ge I(\mathbf{p})$ has a feasible solution \cite{Yates95}.
+%\end{definition}
+%
+%\begin{lemma}[Theorem 2 and 4 in \cite{Yates95}]
+%\label{yateslemma}
+%If $I(\mathbf{p})$ is feasible, then $\mathbf{p}(k+1)=I(\mathbf{p}(k))$ converges synchronously and totally asynchronously to the unique fixed point from any initial point $\mathbf{p}(0)$.
+%\end{lemma}
+%
+%First, it can be easily verified that
+%\begin{equation}
+%(I(\mathbf{p}))_l = w_l/\left(\sum_{j \ne l} \frac{w_j F_{jl}}{(\mathbf{F}\mathbf{p}(k))_j + v_j } \right)
+%\end{equation}
+%is standard for all $l$. Furthermore, if $I(\mathbf{p})$ is standard, then $\min \{(I(\mathbf{p}))_l, \bar{p}_l \}$ is standard (See Theorem 7 in \cite{Yates95}). Hence, the iterative equation in (\ref{pcalgo1eqn}) is standard. Clearly, from the KKT conditions, $\mathbf{p}=I(\mathbf{p})$ has a feasible solution, thus $\min(I(\mathbf{p}),\mathbf{\bar{p}})$ is feasible. Therefore, by Lemma \ref{yateslemma}, $\mathbf{p}(k+1)$ converges to the fixed point of (\ref{sapcfixedpoint}) and hence the optimal solution of (\ref{sapc}).
+%\end{proof}
+%
+%\subsection{Proof of Corollary \ref{pcalgo1fixedpointcorollary}}
+%\begin{proof}
+%Let $(I(\mathbf{p}))^{n}$ be the power vector produced by $n$ iterations of the standard interference function $I(\mathbf{p})$ starting from an intial power vector $\mathbf{\bar{p}}$. We first state the following lemma from \cite{Yates95}. 
+%\begin{lemma}[Lemma 1 in \cite{Yates95}]
+%\label{yatessmalllemma}
+%If $\mathbf{p} \ge I(\mathbf{p})$, then $(I(\mathbf{p}))^{n}$ is a monotone decreasing sequence of feasible power vectors that converges to a unique fixed point $\mathbf{p}^{\prime}$.
+%\end{lemma}
+%Starting from the initial point $\mathbf{p}(0)=\bar{\mathbf{p}}$, $\mathbf{p}(k)$ in Algorithm SAPC is a decreasing sequence by Lemma \ref{yatessmalllemma}, i.e., $\mathbf{p}(k+1) \le \mathbf{p}(k)$. This means $\mathbf{p}^{\prime} \le \mathbf{p}(k+1) \le \mathbf{p}(k) \le \bar{\mathbf{p}}$. Thus, there exists a constant $a \in (0,1]$ such that $\Vert \mathbf{p}(k+1) - \mathbf{p}^{\prime} \Vert \le a \Vert \mathbf{p}(k) - \mathbf{p}^{\prime} \Vert$, or equivalently, $\Vert I(\mathbf{p}(k)) - \mathbf{p}^{\prime} \Vert \le a \Vert \mathbf{p}(k) - \mathbf{p}^{\prime} \Vert$. This means $I(\mathbf{p}(k))$ is a pseudo-contraction mapping, which guarantees a geometric convergence rate to the unique fixed point $\mathbf{p}^{\prime}$. Combining with Theorem \ref{pcalgo1fixedpoint}, Corollary \ref{pcalgo1fixedpointcorollary} is proved.
+%\end{proof}
+%
+%\subsection{Proof of Theorem \ref{maxminsirtheorem}}
+%\begin{proof}
+%Consider the following constrained max-min $\mathsf{SIR}$ problem:
+%\begin{equation}
+%\label{maxminsirgeneral1proof}
+%\begin{array}
+%[c]{rl}
+%\mbox{maximize} & \displaystyle \min_l \mathsf{SIR}_l(\mathbf{p}) \\
+%\mbox{subject to} & \mathbf{p} \le \bar{\mathbf{p}} \\
+%\mbox{variables:} & \mathbf{p}.
+%\end{array}
+%\end{equation}
+%
+%Introducing an auxiliary variable $\tau$, we can rewrite (\ref{maxminsirgeneral1proof}) as
+%\begin{equation}
+%\label{maxminsirgeneral2}
+%\begin{array}
+%[c]{rl}
+%\mbox{maximize} & \tau \\
+%\mbox{subject to} & \tau \le \mathsf{SIR}_l(\mathbf{p}) \;\; \forall \; l, \\
+%& \mathbf{p} \le \bar{\mathbf{p}} \\
+%\mbox{variables:} & \tau, \; \mathbf{p}.
+%\end{array}
+%\end{equation}
+%Making a change of variables: $\tilde{\tau}=\log \tau$ and $\tilde{p}_l=\log p_l$ for all $l$, (\ref{maxminsirgeneral2}) is equivalent to the following convex problem:
+%\begin{equation}
+%\label{maxminsirgeneral3}
+%\begin{array}
+%[c]{rl}
+%\mbox{maximize} & \tilde{\tau} \\
+%\mbox{subject to} & \tilde{\tau} \le \log \mathsf{SIR}_l(\mathbf{\tilde{p}}) \;\; \forall \; l, \\
+%& \tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l, \\
+%\mbox{variables:} & \tilde{\tau}, \; \mathbf{\tilde{p}}.
+%\end{array}
+%\end{equation}
+%
+%Next, introducing the dual variables $\boldsymbol{\lambda}$, the partial Lagrangian of (\ref{maxminsirgeneral3}) is given by
+%\begin{equation}
+%\label{maxminsirgeneral3lang}
+%L(\{\tilde{\tau},\mathbf{\tilde{p}}\},\{\boldsymbol{\lambda}\}) = \tilde{\tau}(1-\sum_l \lambda_l) + \sum_l \lambda_l \log \mathsf{SIR}_l(\mathbf{\tilde{p}}).
+%\end{equation}
+%In order for (\ref{maxminsirgeneral3lang}) to be bounded, we must have $\sum_l \lambda_l = 1$. Hence, the dual problem of (\ref{maxminsirgeneral3}) is given by
+%\begin{equation}
+%\label{maxminsirdual1}
+%\begin{array}
+%[c]{rl}
+%\mbox{minimize} & \displaystyle \max_{\tilde{\tau}, \, \tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l} L(\{\tilde{\tau},\mathbf{\tilde{p}}\},\{\boldsymbol{\lambda}\}) \\
+%\mbox{subject to} & \mathbf{1}^{\trans} \boldsymbol{\lambda}=1, \; \boldsymbol{\lambda} \ge \mathbf{0},\\
+%\mbox{variables:} & \boldsymbol{\lambda}.
+%\end{array}
+%\end{equation}
+%
+%At optimality, the optimal objective to (\ref{maxminsirgeneral3}) is equal to the optimal dual function of (\ref{maxminsirdual1}) and is given by
+%\begin{equation}
+%\label{maxminsirgeneral3dual}
+%\begin{array}
+%[c]{rl}
+%\tilde{\tau}^{\star} = \displaystyle \max_{\tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l} L(\{\tilde{\tau},\mathbf{\tilde{p}}\},\{\boldsymbol{\lambda^{\star}}\}) & = \sum_l \lambda^{\star}_l \log \mathsf{SIR}_l(\mathbf{\tilde{p}}(\boldsymbol{\lambda}^{\star})) \\
+%& = \sum_l \lambda^{\star}_l \log \mathsf{SIR}_l(\mathbf{p}(\boldsymbol{\lambda}^{\star})),
+%\end{array}
+%\end{equation}
+%where
+%\begin{equation}
+%\label{plambda0}
+%\mathbf{\tilde{p}}(\boldsymbol{\lambda})=\arg \max_{\tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l} L(\{\tilde{\tau},\mathbf{\tilde{p}}\},\{\boldsymbol{\lambda}\}).
+%\end{equation}
+%
+%Next, we compute an upper bound to $\tilde{\tau}$ in (\ref{maxminsirgeneral2}). For any feasible $\boldsymbol{\lambda}$ in (\ref{maxminsirgeneral3dual}), we have
+%\begin{equation}
+%\label{primalupperbound}
+%\tilde{\tau} \le \tilde{\tau}^{\star} \le \sum_l \lambda_l \log \mathsf{SIR}_l(\mathbf{p}(\boldsymbol{\lambda})).
+%\end{equation}
+%
+%First, we prove the following result: 
+%\begin{lemma}
+%\label{maxminsircorollary}
+%For any power vector $\mathbf{p}$,
+%\begin{equation}
+%\label{approx1ub}
+%\sum_l x_l y_l \log \mathsf{SIR}_l(\mathbf{p}) \le - \log \rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}),
+%\end{equation}
+%where $i$ is defined in (\ref{maxminsiri}).
+%Equality is achieved in (\ref{approx1ub}) if and only if $\mathbf{p}=a \mathbf{x}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$, where $a=\bar{p}_i/x_i$. In this case, $p_i=\bar{p}_i$. 
+%\end{lemma}
+%
+%First, let
+%\begin{equation}
+%\label{optmaxminrho}
+%\frac{1}{\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})}=
+%\displaystyle \min_l \frac{1}{\rho(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}_l^{\trans})}.
+%\end{equation}
+%
+%Next, we first state the following lemma.
+%\begin{lemma}[Theorem 3.1 in \cite{Friedland75}]
+%\label{friedlandlemma}
+%For any irreducible nonnegative matrix $\mathbf{A}$,
+%\begin{equation}
+%\label{friedland}
+%\prod_l \left((\mathbf{A}\mathbf{z})_l/z_l \right)^{x_l y_l} \ge \rho(\mathbf{A})
+%\end{equation}
+%for all strictly positive $\mathbf{z}$, where $\mathbf{x}$ and $\mathbf{y}$ are the Perron and left eigenvectors of $\mathbf{A}$ respectively. Equality holds in (\ref{friedland}) if and only if $\mathbf{z}= a \mathbf{x}$ for some positive $a$.
+%\end{lemma}
+%
+%\begin{lemma}
+%\label{friedlandsidelemma}
+%If $\mathbf{z}= \mathbf{x}$ in (\ref{friedland}), then $(\mathbf{A}\mathbf{z})_l/z_l = (\mathbf{A}\mathbf{z})_j/z_j, \;\; \forall \; j \ne l$.
+%\end{lemma}
+%
+%Since $\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}$ is irreducible, we let $\mathbf{x}$ and $\mathbf{y}$ be the Perron and left eigenvectors of $\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}$ respectively, and write, for all $\mathbf{p}$ in (\ref{sapc}),
+%\begin{equation}
+%\label{sapcstep0}
+%\begin{array}
+%[c]{rl}
+%\displaystyle \prod_l \left(\mathsf{SIR}(\mathbf{p})\right)^{x_l y_l} & = \displaystyle \prod_l \left(\frac{p_l}{(\mathbf{F}\mathbf{p} + \mathbf{v})_l}\right)^{x_l y_l} \\
+%& \stackrel{(a)}{\le} \displaystyle \prod_l \left(\frac{p_l}{((\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})\mathbf{p})_l}\right)^{x_l y_l} \\
+%& \stackrel{(b)}{\le} 1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}),
+%\end{array}
+%\end{equation}
+%where, in (\ref{sapcstep0}), (a) is due to $p_i \le \bar{p}_i$ and (b) is due to letting $\mathbf{A}=\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}$ in (\ref{friedland}). Thus, we deduce (\ref{approx1ub}).
+%
+%Next, we show that, if and only if $\mathbf{p}=\mathbf{x}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$ (unique up to a scaling constant), the inequality in (\ref{approx1ub}) becomes an equality. Once this is established, Lemma \ref{maxminsircorollary} is proved. 
+%
+%First, we note that (b) in (\ref{sapcstep0}) becomes an equality if and only if $\mathbf{p}=\mathbf{x}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$ (unique up to a scaling constant)
+%using Lemma \ref{friedlandlemma}. Equality of (a) in (\ref{sapcstep0}) follows from the fact that for the max-min $\mathsf{SIR}$ problem, $p_i = \bar{p}_i$ and thus $p_i/\bar{p}_i=1$.
+%
+%Letting $\boldsymbol{\lambda}=\mathbf{x} \circ \mathbf{y}$ in (\ref{primalupperbound}) (which is clearly feasible in (\ref{maxminsirdual1})), we deduce that
+%\begin{equation}
+%\label{intertemp1}
+%\begin{array}[c]{rl}
+%\tilde{\tau}^{\star} & \le \sum_l x_l y_l \log \mathsf{SIR}_l(\mathbf{p}(\mathbf{x} \circ \mathbf{y})) \\
+%& \stackrel{(a)}{\le} - \log \rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}),
+%\end{array}
+%\end{equation}
+%where (a) in (\ref{intertemp1}) is due to Lemma \ref{maxminsircorollary}, thus proving that $\tau \le 1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$. Further, from Lemma \ref{maxminsircorollary}, equality of (a) in (\ref{intertemp1}) is achieved if and only if $\mathbf{p}=a \mathbf{x}$ for some positive $a$ (such that $p_i=\bar{p}_i$). From Lemma \ref{friedlandsidelemma}, this implies
+%\begin{equation}
+%\mathsf{SIR}_l(a \mathbf{x}) = \mathsf{SIR}_j(a \mathbf{x}) \;\; \forall \; j \ne l.
+%\end{equation}
+%In words, this means that a feasible power allocation $\mathbf{p}=a \mathbf{x}$ for some positive $a$ solves (\ref{maxminsirgeneral1proof}) optimally. Hence, we deduce that $\tau^{\star}=1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$.
+%This completes the proof of Theorem \ref{maxminsirtheorem}.
+%\end{proof}
+%
+%\subsection{Proof of Corollary \ref{approx1ubtheorem}}
+%\begin{proof}
+%Using Lemma \ref{maxminsircorollary} in the proof of Theorem \ref{maxminsirtheorem}, we show that $\lambda^{\star}_l=x_l y_l$ for all $l$. From (\ref{maxminsirgeneral3dual}), 
+%\begin{equation}
+%\label{maxminoptimalityeqn1}
+%\sum_l \lambda^{\star}_l \log \mathsf{SIR}_l(\mathbf{p}(\boldsymbol{\lambda}^{\star})) = \tilde{\tau}^{\star} = - \log \rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}).
+%\end{equation}
+%
+%From the Perron-Frobenius theorem, $\mathbf{x}$ and $\mathbf{y}$ are unique up to a scaling constant and also $\boldsymbol{\lambda}^{\star}$ is unique by strict convexity of the constraint set in (\ref{maxminsirgeneral3}). Thus, combining (\ref{maxminoptimalityeqn1}) and the equality case in (\ref{approx1ub}), we have 
+%\begin{equation}
+%\boldsymbol{\lambda}^{\star} = \mathbf{x} \circ \mathbf{y}.
+%\end{equation}
+%Hence, considering SAPC in (\ref{sapc}) with $\mathbf{w} = \mathbf{x} \circ \mathbf{y}$ yields the solution $\mathbf{p}=\mathbf{x}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$ (unique up to a scaling constant).
+%\end{proof}
+%
+%\subsection{Proof of Theorem \ref{maxminSIRcorollary}}
+%\begin{proof}
+%The Max-min $\mathsf{SIR}$ Algorithm is based on the subgradient method that maximizes the partial Lagrangian given by (\ref{maxminsirgeneral3lang}) of (\ref{maxminsirgeneral1}) using Lagrange dual decomposition (cf. Proof of Theorem \ref{approx1ubtheorem}). Since the duality gap is zero, solving the Lagrange dual problem is equivalent to solving (\ref{maxminsirgeneral1}). 
+%
+%First, we compute a subgradient of $\max_{\tilde{\tau}, \, \tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l} L(\{\tilde{\tau},\mathbf{\tilde{p}}\},\{\boldsymbol{\lambda}\})$ for any feasible $\boldsymbol{\lambda}$ in (\ref{maxminsirdual1}). Observe the following chain of inequalities:
+%\begin{equation}
+%\label{chainsubgrad}
+%\begin{array}[c]{rl}
+%& \max_{\tilde{\tau}, \, \tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l} L(\{\tilde{\tau},\mathbf{\tilde{p}}\},\{\boldsymbol{\lambda}\}) \\
+%& = \max_{\tilde{\tau}, \, \tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l} \tilde{\tau}(1-\sum_l \lambda_l) + \sum_l \lambda_l \log \mathsf{SIR}_l(\mathbf{\tilde{p}}) \\
+%& \stackrel{(a)}{\ge} \tilde{\tau}(1-\sum_l \lambda_l) + \sum_l \lambda_l \log \mathsf{SIR}_l(\mathbf{\tilde{p}}(\boldsymbol{\widehat{\lambda}})) \\
+%& = \tilde{\tau}(1-\sum_l \widehat{\lambda}_l) - \sum_l (\lambda_l -\widehat{\lambda}_l)\tilde{\tau} + \\
+%& \;\;\; \sum_l (\lambda_l-\widehat{\lambda}_l) \log \mathsf{SIR}_l(\mathbf{\tilde{p}}(\boldsymbol{\widehat{\lambda}})) +  \sum_l \widehat{\lambda}_l \log \mathsf{SIR}_l(\mathbf{\tilde{p}}(\boldsymbol{\widehat{\lambda}}))\\
+%& \stackrel{(b)}{\ge} \tilde{\tau}(1-\sum_l \hat{\lambda}_l) + \sum_l \widehat{\lambda}_l \log \mathsf{SIR}_l(\mathbf{p}(\boldsymbol{\widehat{\lambda}})) \\
+%& \;\;\; - \sum_l (\lambda_l - \widehat{\lambda}_l) ( \sum_j \widehat{\lambda}_j \log \mathsf{SIR}_j (\mathbf{p}(\boldsymbol{\widehat{\lambda}})) - \log \mathsf{SIR}_l (\mathbf{p}(\boldsymbol{\widehat{\lambda}})) ) \\
+%& \stackrel{(c)}{=} \max_{\tilde{\tau}, \, \tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l} L(\{\tilde{\tau},\mathbf{\tilde{p}}\},\{\boldsymbol{\widehat{\lambda}}\}) \\
+%& \;\;\; - \sum_l (\lambda_l - \widehat{\lambda}_l) ( \sum_j \widehat{\lambda}_j \log \mathsf{SIR}_j (\mathbf{p}(\boldsymbol{\widehat{\lambda}})) - \log \mathsf{SIR}_l (\mathbf{p}(\boldsymbol{\widehat{\lambda}})) ) \\
+%& \stackrel{(d)}{=} \max_{\tilde{\tau}, \, \tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l} L(\{\tilde{\tau},\mathbf{\tilde{p}}\},\{\boldsymbol{\widehat{\lambda}}\}) -
+%\mathbf{g}^{\trans} (\boldsymbol{\lambda} - \boldsymbol{\widehat{\lambda}}),
+%\end{array}
+%\end{equation}
+%where, in (\ref{chainsubgrad}), (a) is due to choosing a feasible $\tilde{\tau}$ and 
+%\begin{equation}
+%\label{plambda}
+%\mathbf{\tilde{p}}(\boldsymbol{\widehat{\lambda}})=\arg \max_{\tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l} L(\{\tilde{\tau},\mathbf{\tilde{p}}\},\{\boldsymbol{\widehat{\lambda}}\})
+%\end{equation}
+%such that 
+%\begin{equation}
+%\label{feasiblesirproof}
+%\log \mathsf{SIR}_l(\mathbf{\tilde{p}}(\boldsymbol{\widehat{\lambda}})) \ge \tilde{\tau}
+%\end{equation}
+%for a feasible $\boldsymbol{\widehat{\lambda}}$, (b) is due to $\sum_l \widehat{\lambda}_l \log \mathsf{SIR}_l(\mathbf{\tilde{p}}(\boldsymbol{\widehat{\lambda}})) \ge \tilde{\tau}$, which is implied by (\ref{feasiblesirproof}), (c) is due to the definition of $\mathbf{\tilde{p}}(\boldsymbol{\widehat{\lambda}})$ in (\ref{plambda}) and, in (d), we have
+%\begin{equation}
+%\label{gsubgrad}
+%(\mathbf{g})_l =\sum_j \widehat{\lambda}_j \log \mathsf{SIR}_j (\mathbf{p}(\boldsymbol{\widehat{\lambda}})) - \log \mathsf{SIR}_l (\mathbf{p}(\boldsymbol{\widehat{\lambda}})).
+%\end{equation}
+%We thus deduce that $-\mathbf{g}$ is a subgradient of $\max_{\tilde{\tau}, \, \tilde{p}_l \le \log \bar{p}_l  \;\; \forall \; l} L(\{\tilde{\tau},\mathbf{\tilde{p}}\},\{\boldsymbol{\lambda}\})$ at $\boldsymbol{\widehat{\lambda}}$.
+%
+%The subgradient method generates a sequence of dual feasible points according to the iteration 
+%\begin{equation}
+%\label{subgradupdate}
+%\lambda_l(t+1)=\max\{\lambda_l(t) + \alpha(t)(\mathbf{g}(k))_l, \, 0 \} \;\; \forall \; l,
+%\end{equation}
+%where $\mathbf{g}(t)$ is the subgradient at $\boldsymbol{\lambda}(t)$ and $\alpha(t)$ is a positive scalar step size. For a given feasible $\boldsymbol{\lambda}(t)$, the Lagrange dual function is evaluated by $\mathbf{\tilde{p}}(\boldsymbol{\lambda}(t))$ or equivalently $\mathbf{p}(\boldsymbol{\lambda}(t))$, which is simply equivalent to solving (\ref{sapc}) by letting the weight vector $\mathbf{w}=\boldsymbol{\lambda}(t)$. There are many standard convergence results of the subgradient method, depending on the choice of step size used \cite{Bertsekas99}. For example, if $\alpha(t)=\alpha$, then (\ref{subgradupdate}) converges to within some range of the optimal value, i.e., $L(\{\tilde{\tau}(t),\mathbf{\tilde{p}}(t)\},\{\boldsymbol{\widehat{\lambda}}(t)\}) - \tilde{\tau}^{\star} < \epsilon_0$ for a small positive $\epsilon_0$. On the other hand, if $\{\alpha(t)\}^{\infty}_{k=1}$ satisfies $\lim_{k \to \infty} \alpha(t)=0$ and $\sum_{k=1}^{\infty} \alpha(t)=\infty$, then $\inf_k L(\{\tilde{\tau}(t),\mathbf{\tilde{p}}(t)\},\{\boldsymbol{\widehat{\lambda}}(t)\}) = \tilde{\tau}^{\star}$ \cite{Bertsekas99}.
+%
+%\begin{lemma}[Proposition 6.3.1 in \cite{Bertsekas99}]
+%\label{choosestepsize1}
+%If $\boldsymbol{\lambda}(t)$ is not optimal, then for every dual optimal solution $\boldsymbol{\lambda}^{\star}$, we have $\Vert \boldsymbol{\lambda}(k+1) - \boldsymbol{\lambda}^{\star} \Vert < \Vert \boldsymbol{\lambda}(t) - \boldsymbol{\lambda}^{\star} \Vert $, for all stepsizes $\alpha(t)$ such that
+%\begin{equation}
+%0 < \alpha(t) <\frac{2(L(\boldsymbol{\lambda}^{\star})-L(\boldsymbol{\lambda}(t)))}{\Vert \mathbf{g}(t) \Vert^2},
+%\end{equation}
+%where $L(\boldsymbol{\lambda}(t))$ and $\mathbf{g}(t)$ are the Lagrange dual function and the subgradient at $\boldsymbol{\lambda}(t)$ respectively.
+%\end{lemma}
+%
+%Now, since the optimal Lagrange dual function in (\ref{maxminsirdual1}) is $\tilde{\tau}^{\star} = - \log \rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$, we apply Lemma \ref{choosestepsize1} to our problem to deduce that if $\alpha(t)$ in the Max-min $\mathsf{SIR}$ Algorithm is strictly less than
+%\begin{equation}
+%\frac{2(- \log \rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})- \sum_l \lambda_l(t)\log \mathsf{SIR}_l(\mathbf{p}(\boldsymbol{\lambda}(t))) )}{\Vert \mathbf{g}(t) \Vert^2},
+%\end{equation}
+%where $\mathbf{g}(t)$ is the subgradient function given by (\ref{gsubgrad}) at $\boldsymbol{\lambda}(t)$, then the Max-min $\mathsf{SIR}$ Algorithm converges linearly.
+%
+%Taken together with Corollary \ref{pcalgo1fixedpointcorollary} (geometric convergence of $\mathbf{p}(\boldsymbol{\lambda}(t))$), this implies the overall geometric convergence of $\mathbf{p}(k)$ to the solution of (\ref{maxminsirgeneral1}). This establishes the convergence of the Max-min $\mathsf{SIR}$ Algorithm.
+%\end{proof}
+%
+%\subsection{Proof of Theorem \ref{maxminwSIRcorollary}}
+%\begin{proof}
+%Theorem \ref{maxminwSIRcorollary} can be proved similar to Theorem \ref{maxminSIRcorollary}, and the details are omitted.
+%\end{proof}
+%
+\subsection{Proof of Theorem \ref{fastmaxminsir}}
+%\begin{proof}
+Our proof is based on the conditional eigenvalue problem in linear algebra \cite{Blondel05}. We let the optimal max-min $\mathsf{SIR}(\mathbf{p}^{\ast})$ in (\ref{maxminwsirgeneral2}) be $\tau^{\ast}$. This implies, at optimality of (\ref{maxminwsirgeneral2}),
+\begin{equation}
+\label{maxminsirfastproofeqn1}
+\frac{(p^{\ast}_l/\bar{p})}{\sum_{j \ne l} F_{lj} (p^{\ast}_l/\bar{p}) + (v_l/\bar{p})} = \tau^{\ast} \beta_l 
+\end{equation}
+for all $l$.
+Letting $\mathbf{s}^{\ast}=(1/\bar{p})\mathbf{p}^{\ast}$, (\ref{maxminsirfastproofeqn1}) can be rewritten as
+\begin{equation}
+\label{maxminsirfastproofeqn2}
+(1/\tau^{\ast}) \mathbf{s}^{\ast} = \mbox{diag}(\boldsymbol{\beta})\mathbf{F}\mathbf{s}^{\ast} + (1/\bar{p})\mbox{diag}(\boldsymbol{\beta}) \mathbf{v}.
+\end{equation}
+
+We first state the following conditional eigenvalue lemma:
+\begin{lemma}[Conditional eigenvalue \cite{Blondel05}, Corollary 14]
+\label{condeigen1}
+Let $\mathbf{A}$ be a nonnegative matrix and $\mathbf{b}$ be a nonnegative vector. If $\rho(\mathbf{A}+\mathbf{b}\mathbf{e}_i^{\trans})>\rho(\mathbf{A})$, where $i=\arg \min_l 1/\rho(\mathbf{A}+\mathbf{b}\mathbf{e}_l^{\trans})$, then the conditional eigenvalue problem
+$$
+\lambda \mathbf{s} = \mathbf{A}\mathbf{s} + \mathbf{b}, \hspace{.1in} \lambda \in \mathbb{R}, \hspace{.1in} \mathbf{s}\ge \mathbf{0}, \hspace{.1in} \max_l s_l=1,
+$$
+has a unique solution given by $\lambda=\rho(\mathbf{A}+\mathbf{b}\mathbf{e}_i^{\trans})$ and $\mathbf{s}$ being the unique normalized Perron eigenvector of $\mathbf{A}+\mathbf{b}\mathbf{e}_i^{\trans}$. 
+\end{lemma}
+
+Letting $\lambda = 1/\tau^{\ast}, \mathbf{A}= \mbox{diag}(\boldsymbol{\beta}) \mathbf{F}, \mathbf{b}=(1/\bar{p}) \mbox{diag}(\boldsymbol{\beta}) \mathbf{v}$ in Lemma \ref{condeigen1} and noting that $\max_l s_l^{\ast}=1$ shows that $\mathbf{p}^{\ast}=(\bar{s}_i/\bar{p})\mathbf{x}(\mbox{diag}(\boldsymbol{\beta})\mathbf{F}+(1/\bar{p})\mbox{diag}(\boldsymbol{\beta})\mathbf{v})$ is a fixed point of (\ref{maxminsirfastproofeqn2}) as it should be (cf. Theorem \ref{maxminsirtheorem}). Now, the fixed point in Lemma \ref{condeigen1} is also a unique fixed point of the following equation \cite{Blondel05}:
+\begin{equation}
+\label{powermethodeqn}
+\mathbf{s} = \frac{\mathbf{A}\mathbf{s}+\mathbf{b}}{\Vert \mathbf{A}\mathbf{s}+\mathbf{b} \Vert_{\infty}}.
+\end{equation}
+Applying the power method in (\ref{powermethodeqn}) to the system of equations in (\ref{maxminsirfastproofeqn2}) yields the following iterative method:
+\begin{enumerate}
+\item \label{maxminsirfaststep1} Update auxiliary variable $\mathbf{s}(k+1)$: 
+\begin{equation}
+\mathbf{s}(k+1)= \mbox{diag}(\boldsymbol{\beta})\mathbf{F} \mathbf{s}(k) + (1/\bar{p})\mbox{diag}(\boldsymbol{\beta})\mathbf{v}.
+\end{equation}
+\item \label{maxminsirfaststep2} Normalize $\mathbf{s}(k+1)$: 
+\begin{equation}
+\mathbf{s}(k+1) \leftarrow \mathbf{s}(k+1)/\max_l s_l(k+1).
+\end{equation}
+\item \label{maxminsirfaststep3} Compute power $\mathbf{p}(k+1)$: 
+\begin{equation}
+\mathbf{p}(k+1)=\mathbf{s}(k+1) \bar{p}.
+\end{equation}
+\end{enumerate}
+
+Combining Step \ref{maxminsirfaststep1} and \ref{maxminsirfaststep3} in the above and after some rearrangement yields Algorithm \ref{pcalgomaxminfast}.
+This completes the proof of Theorem \ref{fastmaxminsir}.
+%\end{proof}
+%
+%\subsection{Proof of Theorem \ref{sumratetheorem}}
+%\begin{proof}
+%We provide a sketch of the proof here. A more rigorous proof can be found in \cite{Friedland08}. First, by introducing auxiliary variables $\boldsymbol{\gamma}$, (\ref{nonconvex0}) can be rewritten as the following optimization problem:
+%\begin{equation}
+%\label{nonconvex}
+%\begin{array}
+%[c]{rl}
+%\mbox{maximize} & \sum_l w_l \log(1+\gamma_l)\\
+%\mbox{subject to} & \gamma_l = \mathsf{SIR}_l(\mathbf{p}) \,\;\; \forall \, l, \\
+%& 0 \le p_l \le \bar{p}_l \,\;\; \forall \, l, \\
+%\mbox{variables:} & \gamma_l, \,\, p_l \,\;\; \forall \, l.
+%\end{array}
+%\end{equation}
+%
+%Now, $\gamma_l = \mathsf{SIR}_l(\mathbf{p})$ for all $l$ can be rewritten as \cite{Foschini93}:
+%\begin{equation}
+%\label{pgammaopt}
+%\mathbf{p} = \left( \mathbf{I} - \mbox{diag}(\boldsymbol{\gamma})\mathbf{F} \right)^{-1} \mbox{diag}(\boldsymbol{\gamma})\mathbf{v}.
+%\end{equation}
+%Given $\boldsymbol{\gamma}$, $\mathbf{p}$ can be found uniquely and vice versa. (\ref{nonconvex}) is then simplified as
+%\begin{equation}
+%\label{nonconvextemp}
+%\begin{array}
+%[c]{rl}
+%\mbox{maximize} & \sum_l w_l \log(1+\gamma_l)\\
+%\mbox{subject to} & \left( \mathbf{I} - \mbox{diag}(\boldsymbol{\gamma}^{\star})\mathbf{F} \right)^{-1} \mbox{diag}(\boldsymbol{\gamma}^{\star})\mathbf{v} \le \bar{p}_l \,\;\; \forall \, l, \\
+%\mbox{variables:} & \gamma_l \,\;\; \forall \, l.
+%\end{array}
+%\end{equation}
+%
+%Next, it suffices to show that
+%\begin{equation}
+%\label{pmaxineq}
+%\left( \mathbf{I} - \mbox{diag}(\boldsymbol{\gamma}^{\star})\mathbf{F} \right)^{-1} \mbox{diag}(\boldsymbol{\gamma}^{\star})\mathbf{v} \le \bar{p}_l
+%\end{equation}
+%is equivalent to $\rho(\mbox{diag}(\boldsymbol{\gamma})(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}^{\trans}_l)) \le 1$ for all $l$.
+%
+%Using Cramer's rule, (\ref{pmaxineq}) can be rewritten as
+%\begin{equation}
+%\label{prooftemp1}
+%\mbox{det}((\mathbf{I} - \mbox{diag}(\boldsymbol{\gamma})\mathbf{F}) \stackrel{l}{\leftarrow} \mbox{diag}(\boldsymbol{\gamma})\mathbf{v}) \le \bar{p}_l  \mbox{det}(\mathbf{I} - \mbox{diag}(\boldsymbol{\gamma})\mathbf{F})
+%\end{equation}
+%for all $l$ where $(\mathbf{I} - \mbox{diag}(\boldsymbol{\gamma})\mathbf{F}) \stackrel{l}{\leftarrow} \mbox{diag}(\boldsymbol{\gamma})\mathbf{v}$ is the adjoint of the matrix $(\mathbf{I} - \mbox{diag}(\boldsymbol{\gamma})\mathbf{F})$ in (\ref{pgammaopt}), i.e., the $l$th column is $\mbox{diag}(\boldsymbol{\gamma})\mathbf{v}$ and whose remaining columns coincide with those of $\mathbf{I} - \mbox{diag}(\boldsymbol{\gamma})\mathbf{F}$. 
+%
+%Now, (\ref{prooftemp1}) can be rearranged to yield
+%\begin{equation}
+%\mbox{det}(\mathbf{I} - \mbox{diag}(\boldsymbol{\gamma})\mathbf{F}) (1 - \mathbf{e}^{\trans}_l (\mathbf{I} - \mbox{diag}(\boldsymbol{\gamma})\mathbf{F})^{-1} (1/\bar{p}_l)\mbox{diag}(\boldsymbol{\gamma})\mathbf{v} ) \ge 0,
+%\end{equation}
+%which is equal to
+%\begin{equation}
+%\label{prooftemp2}
+%\mbox{det}(\mathbf{I} - \mbox{diag}(\boldsymbol{\gamma})\mathbf{F} -  (1/\bar{p}_l)\mbox{diag}(\boldsymbol{\gamma})\mathbf{v} \mathbf{e}^{\trans}_l ) \ge 0.
+%\end{equation}
+%Using the fact that the determinant of a M-matrix is always nonnegative, (\ref{prooftemp2}) is equivalent to
+%\begin{equation}
+%\label{prooftemp3}
+%\rho(\mbox{diag}(\boldsymbol{\gamma})(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}^{\trans}_l)) \le 1.
+%\end{equation}
+%We thus deduce (\ref{nonconvex1}) as an equivalent formulation to (\ref{nonconvex}).
+%
+%Now, to show (\ref{rhoequal1}), we use the following result.
+%\begin{lemma}
+%\label{someusermaxpower}
+%At optimality, $p^{\star} = \bar{p}_i$ for some $i$, i.e., at least one user transmits at maximum power.
+%\end{lemma}
+%Lemma \ref{someusermaxpower} is easily proved since the objective function in (\ref{nonconvex1}) is strictly increasing in $\boldsymbol{\gamma}$ and the Perron-Frobenius eigenvalue is strictly increasing in the matrix elements. From (\ref{prooftemp3}), this means
+%$
+%\rho(\mbox{diag}(\boldsymbol{\gamma}^{\star})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}^{\trans}_i)) = 1,
+%$
+%which implies $p^{\star} = \bar{p}_i$ for some $i$.
+%\end{proof}
+%
+%\subsection{Proof of Lemma \ref{maxminsirsolvesnonconvex}}
+%\begin{proof}
+%First, we state the following result in \cite{Friedland08}.
+%\begin{theorem}\label{apfkineq}  Let $\mathbf{A}\in\R_+^{L\times L}$ be
+% an irreducible matrix.  Let $\et=(\eta_1,\ldots,\eta_L)\trans\in\R^L$.
+% Let $\w=\x(\mbox{diag}(e^{\et}) \mathbf{A})\circ \y(\mbox{diag}(e^{\et})
+% \mathbf{A})=(w_1,\ldots,w_L)\trans$ be a probability vector.  Then for any positive vector
+% $\z=(z_1,\ldots,z_L)\trans$,
+% \begin{equation}\label{apfkineq1}
+% \sum_{l=1}^L w_l \log \frac{z_l}{(\mathbf{A}\z)_l}\le
+% -\log\rho(\mbox{diag}(e^{\et})\mathbf{A}) + \sum_{l=1}w_l\eta_l.
+% \end{equation}
+% If $\mathbf{A}$ has positive off-diagonal elements and $\sum_{j \ne l} w_j > w_l$ for each $l$ such that $A_{ll}=0$, then equality holds if and only
+% if $\z=t\x(\mbox{diag}(e^{\et})\mathbf{A})$ for some $t>0$.
+%\end{theorem}
+%
+%Now, since $\rho(\mbox{diag}(\boldsymbol{\gamma}^{\star})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}^{\trans}_i)) = 1$ for some $i$, we deduce that
+%$\mathbf{p}^{\star}=\mathbf{x}(\diag(\boldsymbol{\gamma}^{\star})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}^{\trans}_i))$ (unique up to some scaling constant)
+%since
+%\begin{equation}
+%\begin{array}
+%[c]{rl}
+%&\diag(\boldsymbol{\gamma}^{\star})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}^{\trans}_i) \mathbf{x}(\diag(\boldsymbol{\gamma}^{\star})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}^{\trans}_i)) \\
+%&= 1 \cdot \mathbf{x}(\diag (\boldsymbol{\gamma}^{\star})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}^{\trans}_i)).
+%\end{array}
+%\end{equation}
+%Assume that $\mathbf{w}=\mathbf{x}(\mbox{diag}(\boldsymbol{\gamma}^{\star})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})) \circ \mathbf{y}(\mbox{diag}(\boldsymbol{\gamma}^{\star})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}))$.
+%Letting $\mathbf{z}=\mathbf{p}^{\star}$ and $\mathbf{A}=\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}^{\trans}_i$ in (\ref{apfkineq1}), we deduce that
+%\begin{equation}
+%\label{pmaxati}
+%\log\rho(\mbox{diag}(\boldsymbol{\gamma}^{\star})(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}^{\trans}_i)) = 0,
+%\end{equation}
+%which satisfies the condition given by Lemma \ref{someusermaxpower}. 
+%
+%It is interesting to note that the equality case in Theorem \ref{apfkineq} can be interpreted as satisfying KKT conditions of the following problem:
+% \begin{equation}
+% \label{optprob}
+%  \begin{array}
+% [c]{rl}
+% \mbox{maximize} & \sum_l w_l \tilde{\gamma}_l \\
+% \mbox{subject to} &  \log \rho(\diag(e^{\boldsymbol{\tilde\gamma}})\mathbf{A}) \le 0 \\
+% \mbox{variables:} & \tilde{\gamma}_l, \,\;\; \forall \, l.
+% \end{array}
+% \end{equation}
+%where $\mathbf{A}$ is an irreducible nonnegative matrix.
+%Note (\ref{optprob}) is an unbounded convex optimization problem (recall that for a nonnegative irreducible matrix
+% $\mathbf{A}\in\R_+^{L\times L}$, $\log\rho(e^{\boldsymbol{\tilde{\gamma}}} \mathbf{A})$ is a convex function \cite{Kin}). For the solution of (\ref{optprob}) to be finite, we rule out $\tilde{\gamma}_l=-\infty$.
+%The Lagrangian of (\ref{optprob}) is given by
+%$L = \sum_l w_l \tilde{\gamma} - \lambda \log \rho(\diag(e^{\boldsymbol{\tilde\gamma}})\mathbf{A})$, where $\lambda >0$ is the dual variable. Taking the first order derivative with respect to $\tilde\gam_l$, we have, for each $l$,
+%\begin{equation}
+%\label{firstorder}
+%\frac{dL}{d \tilde\gam_l}= w_l - \frac{\lambda}{\rho(\diag(e^{\boldsymbol{\tilde\gamma}})\mathbf{A})} (\mathbf{x}(\diag(e^{\boldsymbol{\tilde\gamma}})\mathbf{A}) \circ \mathbf{y}(\diag(e^{\boldsymbol{\tilde\gamma}})\mathbf{A}))_l.
+%\end{equation}
+%Set (\ref{firstorder}) to zero and use the fact that $\mathbf{1}^{\trans} \mathbf{w}=1$ and $\mathbf{x}^{\trans}\mathbf{y}=1$, we have
+%$
+%\lambda = \rho(\diag(e^{\boldsymbol{\tilde\gamma}})\mathbf{A}).
+%$
+%Hence, at optimality of (\ref{optprob}),
+%\begin{equation}
+%\mathbf{w} = \mathbf{x}(\diag(e^{\boldsymbol{\tilde\gamma}})\mathbf{A}) \circ \mathbf{y}(\diag(e^{\boldsymbol{\tilde\gamma}})\mathbf{A}).
+%\end{equation}
+%
+%From Theorem \ref{apfkineq}, $\boldsymbol{\gamma}^{\star}$ is unique up to a scaling constant. Thus, we consider the case where $\boldsymbol{\gamma}^{\star}=\mathbf{1}$ (unique up to a scaling constant). Let $\mathbf{A}=\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}$ in (\ref{optprob}), assuming $\boldsymbol{\gamma}^{\star}$ to be positive. Therefore, we have $\mathbf{w}=\mathbf{x}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}) \circ \mathbf{y}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$. Now, $\boldsymbol{\gamma}=(1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}))\mathbf{1}$ is the largest possible value that satisfies the constraints in (\ref{nonconvex1}). Hence, we deduce $\boldsymbol{\gamma}^{\star}=(1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans}))\mathbf{1}$, where $i$ is given by (\ref{maxminsiri}).
+%\end{proof}
+%
+%\subsection{Proof of Theorem \ref{Luserrateregioncorollary}}
+%\begin{proof}
+%We deduce (\ref{Luserrateregion}) by substituting $\gamma_l = e^{r_l}-1$ for all $l$ in the constraint set of (\ref{nonconvex1}). The time-sharing operation convexifies the resultant nonconvex constraint set, thus we deduce the achievable rate region using both power control and time-sharing as $\mbox{Conv}\{\mathcal{R}\}$.
+%\end{proof}
+%
+%\subsection{Proof of Corollary \ref{rateregion}}
+%\begin{proof}
+%Using Lemma \ref{someusermaxpower}, we first let the first user transmit at $\bar{p}_1$ and obtain its corresponding achievable rate from (\ref{thruput}) as the second user varies its power in $[0,\bar{p}_2]$, which results in the first term in the minimum expression on the righthand side of (\ref{2userrateregion}). Similarly, letting the second user transmit at $\bar{p}_2$, we can obtain the second term on the righthand side in (\ref{2userrateregion}). The achievable rate for the first user is thus the minimum of these two terms.
+%
+%Letting $\bar{p}_l \rightarrow \infty$ in (\ref{2userrateregion}) and using L'Hopital's rule, both terms on the righthand side in (\ref{2userrateregion}) reduce to $\log( 1+1/(F_{12}F_{21}(e^{r_2}-1)))$, which bounds the achievable rate for the first user. Note that (\ref{rateregionupperbound}) can also be obtained by considering (\ref{nonconvex_2users}). Letting $\bar{p}_l \rightarrow \infty$, the constraint set in (\ref{nonconvex_2users}) reduces to $F_{12}F_{21}\gamma_1\gamma_2\le 1$, which leads to (\ref{rateregionupperbound}) by letting $\gamma_l=e^{r_l}-1$ for $l=1,2$. Thus Corollary \ref{rateregion} is proved. 
+%\end{proof}
+%
+%\subsection{Proof of (\ref{2x2asympthruput})}
+%\label{2x2asympthruputproof}
+%\begin{proof}
+%By making the substitution $r_l = \log(1+\gamma_l)$ for all $l$, (\ref{nonconvex_2users}) can be written as 
+%\begin{equation}
+%\label{2userMaxPowerOpt}
+%\begin{array}
+%[c]{rl}
+%\mbox{maximize} & r_1 + r_2\\
+%\mbox{subject to} &  r_1 \le  \log\left( 1+ 1/(F_{12}F_{21}(e^{r_2}-1)) \right), \\
+%\mbox{variables:} & r_1, \; r_2.
+%\end{array}
+%\end{equation}
+%If $r^{\star}_1>0$, it is easy to see that the constraint in (\ref{2userMaxPowerOpt}) is tight at optimality. Hence, $r^{\star}_2 = \arg \max_{r_2} \log\left( 1+ 1/(F_{12}F_{21}(e^{r_2}-1)) \right) + r_2 = \log (1+1/\sqrt{F_{12}F_{21}})$, which is equal to $r^{\star}_1$.
+%\end{proof}
+%
+%\subsection{Proof of Lemma \ref{relaxtight}}
+%\begin{proof}
+%Suppose $\mathbf{1}^{\trans}\mathbf{p} < \mathbf{1}^{\trans}\mathbf{\bar{p}}$ at optimality. The objective function in (\ref{nonconvexmatrix1}) can be strictly improved by increasing the power of all users proportionally such that $\mathbf{1}^{\trans}\mathbf{p} = \mathbf{1}^{\trans}\mathbf{\bar{p}}$, since $\mathsf{SIR}_l(\mathbf{p})$ for all $l$ increases monotonically. But this contradicts the assumption, thus Lemma \ref{relaxtight} is proved.
+%\end{proof}
+%
+%\subsection{Proof of Lemma \ref{lemmarhoB}}
+%\begin{proof}
+%We first state the following lemma.
+%\begin{lemma}[Splitting lemma \cite{Berman79}, Chapter 7, Theorem 5.2]
+%\label{splitting}
+%Let $\mathbf{A}=\mathbf{M}-\mathbf{N}$ with $\mathbf{A}$ and $\mathbf{M}$ nonsingular. Suppose that $\mathbf{H}\ge \mathbf{0}$, where $\mathbf{H}=\mathbf{M}^{-1}\mathbf{N}$. Then $\rho(\mathbf{H}) = \rho(\mathbf{A}^{-1}\mathbf{N})/(1+\rho(\mathbf{A}^{-1}\mathbf{N}))$ if and only if $\mathbf{A}^{-1}\mathbf{N} \ge \mathbf{0}$.
+%\end{lemma}
+%
+%Letting $\mathbf{A}=(\mathbf{I}+\mathbf{B})^{-1}$, $\mathbf{M}=\mathbf{I}$ and $\mathbf{N}=\mathbf{\tilde{B}}$ in Lemma \ref{splitting}, we have $\rho(\mathbf{\tilde{B}}) = \rho((\mathbf{I}+\mathbf{B})\mathbf{\tilde{B}})/(1+\rho((\mathbf{I}+\mathbf{B})\mathbf{\tilde{B}}))$. But $(\mathbf{I}+\mathbf{B})\mathbf{\tilde{B}}=\mathbf{B}$, thus obtaining (\ref{rhotildeBeqn}). Next, we multiply both sides of $\mathbf{B} - \mathbf{\tilde{B}}=\mathbf{\tilde{B}} \mathbf{B}$ with the Perron eigenvector $\mathbf{x}$ of $\mathbf{B}$. After rearranging, we obtain $\mathbf{\tilde{B}}\mathbf{x}=\rho(\mathbf{\tilde{B}})\mathbf{x}$. Thus, $\mathbf{\tilde{B}}$ and $\mathbf{B}$ have the same Perron eigenvector $\mathbf{x}$. A similar proof for the left eigenvector $\mathbf{y}$ can also be shown. 
+%\end{proof}
+%
+%\subsection{Proof of Lemma \ref{bhasnotildeb}}
+%\begin{proof}
+%Let $\mathbf{B} = \mathbf{F}$, where $F_{lj}>0$ for all $l,j$ and $l \ne j$. Suppose $\mathbf{\tilde{B}} \ge \mathbf{0}$ exists. Since $F_{ll}=0$ for all $l$, by definition \ref{qidef}, $\mathbf{F} \ge \mathbf{\tilde{B}}$, thus $\tilde{B}_{ll}=0$ for all $l$. We assume $\mathbf{\tilde{B}}$ with $\tilde{B}_{ll}=0$ for all $l$ exists. By definition \ref{qidef}, $\mathbf{F}-\mathbf{\tilde{B}} = \mathbf{F} \mathbf{\tilde{B}}$. Thus, $\mbox{Tr}[\mathbf{F} \mathbf{\tilde{B}}]=\mbox{Tr}[\mathbf{\tilde{B}} \mathbf{F}]=0$, where $\mbox{Tr}[\cdot]$ denotes the trace operator. But, this cannot happen unless $\mathbf{F}=\mathbf{0}$ or $\mathbf{\tilde{B}}=\mathbf{0}$, which is at once a contradiction that $\mathbf{\tilde{B}}$ exists. This proves Lemma \ref{bhasnotildeb}.
+%\end{proof}
+%
+%\subsection{Proof of Lemma \ref{bhastildeb}}
+%\begin{proof}
+%Suppose that $\mathbf{\tilde{B}}=a \mathbf{v}\mathbf{1}^{\trans}$ for some positive $a$ when $\mathbf{B}=\mathbf{v}\mathbf{1}^{\trans}$. We shall show that $\mathbf{\tilde{B}}$ satisfies definition \ref{qidef} for a unique $a<1$. By definition \ref{qidef}, $(\mathbf{I}+\mathbf{v}\mathbf{1}^{\trans})=(\mathbf{I}-a \mathbf{v}\mathbf{1}^{\trans})^{-1}$, which can be written as $(\mathbf{I}+\mathbf{v}\mathbf{1}^{\trans})=\sum_{l=0}^{\infty} (a \mathbf{v}\mathbf{1}^{\trans})^l$ using the von Neumann's expansion \cite{Berman79}. This leads to $\sum_{l=1}^{\infty} a^l ( \mathbf{v}^{\trans} \mathbf{1})^{l-1}=1$, which yields $a=1/(1+\mathbf{1}^{\trans} \mathbf{v})$. It can be checked, by definition \ref{qidef}, that $\mathbf{B}-\mathbf{\tilde{B}}=(1-1/(1+\mathbf{1}^{\trans} \mathbf{v}))\mathbf{1}\mathbf{v}^{\trans} = \mathbf{B}\mathbf{\tilde{B}} = \mathbf{\tilde{B}}\mathbf{B} \ge \mathbf{0}$, thus proving Lemma \ref{bhastildeb}.
+%\end{proof}
+%
+%\subsection{Proof of Theorem \ref{approx2ubtheorem}}
+%\begin{proof}
+%First, we state the following lemma.
+%\begin{lemma}[Lemma 4 in \cite{Blondel05}]
+%\label{blondel}
+%Let $\mathbf{A} \ge \mathbf{0}$ and $\mathbf{b},\mathbf{c}$ be nonnegative vectors. If $\rho(\mathbf{A}+\mathbf{b}\mathbf{c}^{\trans})>\rho(\mathbf{A})$, then for any nonnegative vector $\mathbf{d}$,
+%%\begin{eqnarray}
+%\begin{equation}
+%\label{blondeeqn}
+%\mbox{sign}(\rho(\mathbf{A}+\mathbf{b}\mathbf{c}^{\trans})-\rho(\mathbf{A}+\mathbf{b}\mathbf{d}^{\trans}))= \mbox{sign}(\mathbf{c}^{\trans} \mathbf{x}-\mathbf{d}^{\trans} \mathbf{x}),
+%\end{equation}
+%where $\mathbf{x}$ is the Perron eigenvector of $\mathbf{A}+\mathbf{b}\mathbf{c}^{\trans}$.
+%%\end{eqnarray}
+%\end{lemma}
+%
+%For any $l$, let $\mathbf{A}=\mbox{diag}(\mathsf{SIR}(\widehat{\mathbf{p}}))\mathbf{F}$, $\mathbf{b}=\mbox{diag}(\mathsf{SIR}(\widehat{\mathbf{p}}))\mathbf{v}$, $\mathbf{c}=(1/\sum_l \bar{p}_l)\mathbf{1}$ and $\mathbf{d}=(1/\bar{p}_l)\mathbf{e}_l$ in Lemma \ref{blondel}. Then, $\rho(\mbox{diag}(\mathsf{SIR}(\widehat{\mathbf{p}}))\mathbf{B}) \ge \rho(\mbox{diag}(\mathsf{SIR}(\widehat{\mathbf{p}}))(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}_l^{\trans}))$ is equivalent to $(1/\sum_l \bar{p}_l)\mathbf{1}^{\trans} \mathbf{x}(\mbox{diag}(\mathsf{SIR}(\widehat{\mathbf{p}}))\mathbf{B}) \ge (1/\bar{p}_l)\mathbf{e}_l^{\trans} \mathbf{x}(\mbox{diag}(\mathsf{SIR}(\widehat{\mathbf{p}}))\mathbf{B})$ or $\bar{p}_l \ge (\mathbf{x}(\mbox{diag}(\mathsf{SIR}(\widehat{\mathbf{p}}))\mathbf{B}))_l$ since $\mathbf{x}(\mbox{diag}(\mathsf{SIR}(\widehat{\mathbf{p}}))\mathbf{B})=\widehat{\mathbf{p}}$ and $\mathbf{1}^{\trans} \mathbf{x}(\mbox{diag}(\mathsf{SIR}(\widehat{\mathbf{p}}))\mathbf{B})=\sum_l \bar{p}_l$. Hence, we deduce (\ref{rhocompare}).
+%
+%Next, we prove the second part of the theorem. For special cases of $\mathbf{w}$, we remark that the function (\ref{nonconvexmatrix3}) is instrumental in irreducible nonnegative matrix theory and goes back to \cite{Friedland75,Djokovic70}, and the main result in \cite{Friedland75,Friedland08} is key to proving Theorem \ref{approx2ubtheorem}.
+%Suppose $\mathbf{\tilde{B}} \ge \mathbf{0}$. Also, let $\mathbf{x}=\mathbf{x}(\mathbf{B})$ and $\mathbf{y}=\mathbf{y}(\mathbf{B})$. Define $\widehat{\gamma}_l = \mathsf{SIR}_l(\mathbf{\widehat{p}})$. Clearly, $\sum_l w_l \log(1+\widehat{\gamma}_l)$ in (\ref{nonconvexmatrix2}) is equal to $\sum_l w_l \log (z_l/(\mathbf{\tilde{B}} \mathbf{z})_l)$. Observe the following chain of inequalities:
+%\begin{equation}
+%\label{approx2ubtheoremproof1}
+%\begin{array}[c]{rl}
+%\sum_l x_l y_l \log(1+\widehat{\gamma}_l) & = \displaystyle \sum_l x_l y_l \log (z_l/(\mathbf{\tilde{B}} \mathbf{z})_l) \\
+%& \stackrel{(a)}{\le} -\log \rho(\mathbf{\tilde{B}}) \\
+%& \stackrel{(b)}{=} \log(1+1/\rho(\mathbf{B})),
+%\end{array}
+%\end{equation}
+%where (a) is due to letting $\mathbf{A}=\mathbf{\tilde{B}}$ in (\ref{friedland}), and using the fact that $\mathbf{x}(\mathbf{\tilde{B}})=\mathbf{x}(\mathbf{B})$ and $\mathbf{y}(\mathbf{\tilde{B}})=\mathbf{y}(\mathbf{B})$ from Lemma \ref{lemmarhoB}, and (b) is due to (\ref{rhotildeBeqn}) in Lemma \ref{lemmarhoB}. 
+%
+%Interestingly, besides using the key inequality in (\ref{friedland}), we will show that (a) can also be established using the following result in \cite{Friedland75}.
+%\begin{theorem}[\cite{Friedland75}]
+%\label{boundonspectral}
+%Let $\boldsymbol{\gamma} \ge \mathbf{0}$ and let $\mathbf{A}\in\R_+^{L\times L}$ be
+% an irreducible matrix. Then,
+%\begin{equation}
+%\label{boundonspectraleqn}
+%\prod_l \gamma_l^{x_l(\mathbf{A}) y_l(\mathbf{A})} \rho(\mathbf{A}) \le
+%\rho(\mbox{diag}(\boldsymbol{\gamma})\mathbf{A}).
+%\end{equation}
+%Equality holds for the lefthand-side if and only if $\gamma_l$ is equal for all $l$.
+%\end{theorem}
+%
+%First, note that though (\ref{nonconvexmatrix2}) is seemingly nonconvex in $\mathbf{z}$, (\ref{nonconvexmatrix2}) can nevertheless be solved optimally by first making a change of variables $\tilde{z}_l=\log z_l$ for all $l$ in (\ref{nonconvexmatrix2}). This is allowed since $\mathbf{z} > \mathbf{0}$ and $\tilde{z}^{\star}_l=\log z^{\star}_l$ for all $l$. Applying the KKT conditions to (\ref{nonconvexmatrix2}) in the $\mathbf{\tilde{z}}$ domain, the optimal solution to (\ref{nonconvexmatrix2}) is given by
+%\begin{equation}
+%\label{maxthruputkktequation}
+%z^{\star}_l = \frac{w_l}{\sum_j w_j \tilde{B}_{jl}/(\mathbf{\tilde{B}} \mathbf{z}^{\star} )_j }
+%\end{equation}
+%for all $l$ and satisfies $\mathbf{1}^{\trans} \mathbf{z}^{\star} - \mathbf{1}^{\trans} \mathbf{\tilde{B}} \mathbf{z}^{\star} = \bar{P}$. Furthermore, by making a change of variables $q_l = w_l/z^{\star}_l > 0$ for all $l$ and noting that $z^{\star}_l/(\mathbf{\tilde{B}}\mathbf{z}^{\star})_l = 1+ \widehat{\gamma}_l$, (\ref{maxthruputkktequation}) can be rewritten as $\mathbf{\tilde{B}}^{\trans} \mbox{diag}(\mathbf{1}+\boldsymbol{\widehat{\gamma}}) \mathbf{q} = \mathbf{q}$. By the Perron Frobenius Theorem, this implies $\rho(\mathbf{\tilde{B}}^{\trans} \mbox{diag}(\mathbf{1}+\boldsymbol{\widehat{\gamma}}))=\rho(\mbox{diag}(\mathbf{1}+\boldsymbol{\widehat{\gamma}})\mathbf{\tilde{B}}^{\trans})=1$. Using (\ref{boundonspectraleqn}) in Theorem \ref{boundonspectral}, we thus have 
+%\begin{equation}
+%\label{approx2ubtheoremproof1alteqn}
+%\prod_l (1+\widehat{\gamma}_l)^{(\mathbf{y} \circ \mathbf{x})_l} \rho(\mathbf{\tilde{B}}^{\trans}) \le \rho(\mbox{diag}(\mathbf{1}+\boldsymbol{\widehat{\gamma}})\mathbf{\tilde{B}}^{\trans}) = 1.
+%\end{equation}
+%Since $\rho(\mathbf{\tilde{B}}^{\trans}) = \rho(\mathbf{\tilde{B}})$, and taking logarithm on both sides of (\ref{approx2ubtheoremproof1alteqn}), this establishes (a) in (\ref{approx2ubtheoremproof1}).
+%
+%Now, in (\ref{friedland}), if $\mathbf{z} \ge \mathbf{A}\mathbf{z}$, then for any positive vector $\mathbf{w}$, (\ref{friedland}) can be extended to
+%\begin{equation}
+%\label{friedlandgeneral}
+%\prod_l \left(\frac{(\mathbf{A}\mathbf{z})_l}{z_l} \right)^{w_l} \ge (\rho(\mathbf{A}))^{\Vert \mathbf{w} \Vert^{\mathbf{x} \circ \mathbf{y}}_{\infty}}.
+%\end{equation}
+%Clearly, (\ref{friedlandgeneral}) reduces to (\ref{friedland}) when $\mathbf{w} = \mathbf{x} \circ \mathbf{y}$. (\ref{friedlandgeneral}) can be deduced by noting that $\Vert \mathbf{w} \Vert^{\mathbf{x}(\mathbf{B}) \circ \mathbf{y}(\mathbf{B})}_{\infty}= 1/\displaystyle \min_l \{x_l y_l/w_l\}$ and thus
+%\begin{equation}
+%\prod_l \left(\frac{(\mathbf{A}\mathbf{z})_l}{z_l} \right)^{w_l} \ge \prod_l \left(\frac{(\mathbf{A}\mathbf{z})_l}{z_l} \right)^{w_l \frac{x_ly_l}{w_l} \Vert \mathbf{w} \Vert^{\mathbf{x} \circ \mathbf{y}}_{\infty}} \ge (\rho(\mathbf{A}))^{\Vert \mathbf{w} \Vert^{\mathbf{x} \circ \mathbf{y}}_{\infty}}.
+%\end{equation}
+%
+%Now, we apply (\ref{friedlandgeneral}) to (\ref{approx2ubtheoremproof1}) by letting $\mathbf{A}=\mathbf{\tilde{B}}$ to deduce
+%\begin{equation}
+%\label{approx2ubtheoremproof2}
+%\begin{array}[c]{rl}
+%\sum_l w_l \log(1+\widehat{\gamma}_l) & = \sum_l w_l \log (z_l/(\mathbf{\tilde{B}} \mathbf{z})_l)  \\
+%& \le -\Vert \mathbf{w} \Vert^{\mathbf{x}(\mathbf{\tilde{B}}) \circ \mathbf{y}(\mathbf{\tilde{B}})}_{\infty} \log \rho(\mathbf{\tilde{B}}) \\
+%& = \Vert \mathbf{w} \Vert^{\mathbf{x}(\mathbf{B}) \circ \mathbf{y}(\mathbf{B})}_{\infty} \log \left( 1 + 1/\rho(\mathbf{B}) \right).
+%\end{array}
+%\end{equation}
+%
+%Clearly, equality holds in (\ref{approx2ub}) if and only if $\mathbf{w}=\mathbf{x}(\mathbf{B}) \circ \mathbf{y}(\mathbf{B})$ by considering $\mathbf{z}=\mathbf{x}(\mathbf{B})$ and using (\ref{friedland}). This completes the proof of Theorem \ref{approx2ubtheorem}.
+%\end{proof}
+%
+%\subsection{Proof of Lemma \ref{maxminsirtotalpowerlemma}}
+%\begin{proof}
+%Our proof is based on the conditional eigenvalue problem in linear algebra \cite{Blondel05}. For an alternate proof, see \cite{MahdaviDoost07}, which though does not give the eigenvector as the solution to (\ref{maxminsirtotalpower}). Using the auxiliary variable approach in the proof of Theorem \ref{approx1ubtheorem}, we let the optimal max-min $\mathsf{SIR}(\mathbf{p}^{\ast})$ in (\ref{maxminsirtotalpower}) be $\tau^{\ast}$ (optimal auxiliary variable). This implies, at optimality of (\ref{maxminsirtotalpower}),
+%\begin{equation}
+%\label{maxminsirtotalpowerproofeqn1}
+%\frac{(p^{\ast}_l/\sum_k p^{\ast}_k)}{\sum_{j \ne l} F_{lj} (p^{\ast}_l/\sum_k p^{\ast}_k) + (v_l/\sum_k p^{\ast}_k)} = \tau^{\ast}.
+%\end{equation}
+%Letting $\mathbf{x}^{\ast}=(\mathbf{p}^{\ast}/\sum_k p^{\ast}_k)$ and noting $\sum_k p^{\ast}_k=\sum_k \bar{p}_k$, (\ref{maxminsirtotalpowerproofeqn1}) can be rewritten as
+%\begin{equation}
+%\label{maxminsirtotalpowerproofeqn2}
+%\mathbf{x}^{\ast} = \mbox{diag}(\tau^{\ast} \mathbf{1})\mathbf{F}\mathbf{x}^{\ast} + (1/\mathbf{1}^{\trans}\mathbf{\bar{p}})\mbox{diag}(\tau^{\ast} \mathbf{1}) \mathbf{v}.
+%\end{equation}
+%
+%We first state the following conditional eigenvalue lemma:
+%\begin{lemma}[Conditional eigenvalue \cite{Blondel05}, Corollary 13]
+%\label{condeigen}
+%Let $\mathbf{A}$ be a nonnegative matrix and $\mathbf{b}$ be a nonnegative vector. If $\rho(\mathbf{A}+\mathbf{b}\mathbf{1}^{\trans})>\rho(\mathbf{A})$, then the conditional eigenvalue problem
+%$$
+%\lambda \mathbf{x} = \mathbf{A}\mathbf{x} + \mathbf{b}, \hspace{.1in} \lambda \in \mathbb{R}, \hspace{.1in} \mathbf{x}\ge \mathbf{0}, \hspace{.1in} \mathbf{1}^{\trans}\mathbf{x}=1,
+%$$
+%has a unique solution given by $\lambda=\rho(\mathbf{A}+\mathbf{b}\mathbf{1}^{\trans})$ and $\mathbf{x}$ being the unique normalized Perron eigenvector of $\mathbf{A}+\mathbf{b}\mathbf{1}^{\trans}$. 
+%\end{lemma}
+%
+%Applying Lemma \ref{condeigen} to (\ref{maxminsirtotalpowerproofeqn2}) by letting $\lambda = 1/\tau^{\ast}, \mathbf{A}=\mathbf{F}, \mathbf{b}=(1/\mathbf{1}^{\trans}\mathbf{\bar{p}}) \mathbf{v}$ and noting that $\mathbf{1}^{\trans}\mathbf{x}^{\ast}=1$ proves Lemma \ref{maxminsirtotalpowerlemma}.
+%\end{proof}
+%
+%\subsection{Proof of Theorem \ref{mainthm}}
+%\begin{proof}
+%Now, (\ref{mainthmeqn}) follows easily from Theorem \ref{approx2ubtheorem}, since the optimal objective of (\ref{nonconvexmatrix1}) upper bounds that of (\ref{nonconvex0}). 
+%
+%Next, we prove that equality is achieved by a special case. We first show the following result.
+%\begin{lemma}
+%\label{maxminrelequalmaxmin}
+%The solution of (\ref{maxminsirtotalpower}) is feasible for (\ref{maxminsirgeneral1}) if and only if 
+%\begin{equation}
+%\label{maxminrelequalmaxmineqn}
+%\rho(\mathbf{B}) \ge \rho(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}_l^{\trans})
+%\end{equation}
+%for all $l$. In this case, the optimal objective of (\ref{maxminsirtotalpower}) is equal to that of (\ref{maxminsirgeneral1}).
+%\end{lemma}
+%\begin{proof}
+%For any $l$, let $\mathbf{A}=\mathbf{F}$, $\mathbf{b}=\mathbf{v}$, $\mathbf{c}=(1/\sum_l \bar{p}_l)\mathbf{1}$ and $\mathbf{d}=(1/\bar{p}_l)\mathbf{e}_l$ in Lemma \ref{blondel}. Then, $\rho(\mathbf{B}) \ge \rho(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}_l^{\trans})$ is equivalent to $(1/\sum_l \bar{p}_l)\mathbf{1}^{\trans} \mathbf{x}(\mathbf{B}) \ge (1/\bar{p}_l)\mathbf{e}_l^{\trans} \mathbf{x}(\mathbf{B})$ or $\bar{p}_l \ge (\mathbf{x}(\mathbf{B}))_l$ since $\mathbf{1}^{\trans} \mathbf{x}(\mathbf{B})=\sum_l \bar{p}_l$. 
+%
+%Suppose (\ref{maxminrelequalmaxmineqn}) is true. Observe that (\ref{maxminsirtotalpower}) is a relaxed problem of (\ref{maxminsirgeneral1}), so $\rho(\mathbf{B}) \le \rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$. Thus, $\rho(\mathbf{B}) = \rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$. Hence, the optimal objective of (\ref{maxminsirtotalpower}) is equal to that of (\ref{maxminsirgeneral1}). This proves Lemma \ref{maxminrelequalmaxmin}.
+%\end{proof}
+%
+%Now, using the symmetry of the user parameters and Theorem \ref{approx1ubtheorem}, the optimal power vector in (\ref{maxminsirtotalpower}) is $(\mathbf{1}^{\trans} \mathbf{\bar{p}}/L) \mathbf{1}=\mathbf{\bar{p}}$, and clearly satisfies the constraint set of (\ref{maxminsirgeneral1}). From Lemma \ref{maxminrelequalmaxmin}, the optimal objectives of (\ref{maxminsirgeneral1}) and (\ref{maxminsirtotalpower}) are equal, i.e., $\rho(\mathbf{B})=\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$. In fact, by symmetry, $\rho(\mathbf{B})=\rho(\mathbf{F}+(1/\bar{p}_l)\mathbf{v}\mathbf{e}_l^{\trans})$ for all $l$. Now, $\mathbf{B}=\mathbf{B}^{\trans}$. In this case, $\mathbf{y}(\mathbf{B})=\mathbf{x}(\mathbf{B})$. Thus, if $\mathbf{w}=\mathbf{x}(\mathbf{B}) \circ \mathbf{y}(\mathbf{B})=\mathbf{x}(\mathbf{B}) \circ \mathbf{x}(\mathbf{B})$, then $\sum_l w_l \log(1+\mathsf{SIR}_l(\mathbf{p}^{\star})) = \log(1+1/\rho(\mathbf{B}))= \log \left( 1 + 1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})\right)$, i.e., equality is achieved by the optimizer of (\ref{maxminsirgeneral1}), i.e., $\mathbf{p}^{\star} = \mathbf{x}(\mathbf{B})=\mathbf{x}(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})$ (unique up to a scaling constant).
+%\end{proof}
+%
+%\subsection{Proof of Theorem \ref{maxminsirapproxratio}}
+%\begin{proof}
+%Theorem \ref{maxminsirapproxratio} is proved by using Theorem \ref{mainthm} and using the fact that $\sum_l w_l \log(1+1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})) \le \sum_l w_l \log(1+\mathsf{SIR}(\mathbf{p}^{\star}))$. Note that $0 < \eta \le 1$ since $1/\Vert \mathbf{w} \Vert^{\mathbf{x}(\mathbf{B}) \circ \mathbf{y}(\mathbf{B})}_{\infty} \le 1$ and $\log(1+1/\rho(\mathbf{F}+(1/\bar{p}_i)\mathbf{v}\mathbf{e}_i^{\trans})) \le \log(1+1/\rho(\mathbf{B}))$.
+%\end{proof}
+
+%\bibliographystyle{IEEEtran}
+\bibliographystyle{unsrt}
+\bibliography{daniel}
+
+\end{document}

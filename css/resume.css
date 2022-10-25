@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Theme of Crisp Minimal Resume
+ * Copyright (c) David Zhang, 2019
+ */
+html {
+  width: 100%;
+  font-size: 14px;
+}
+
+body {
+  width: 100%;
+  font-family: "SF Pro SC","HanHei SC","SF Pro Text","Myriad Set Pro","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1rem;
+  margin: 0;
+  color: #495057;
+  background-color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.625rem;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.325rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+ul {
+  margin-left: 1.5em;
+  list-style-type: square;
+}
+
+ol {
+  margin-left: 1.5em;
+  list-style-type: upper-roman;
+}
+
+@layer components {
+  .article {
+    @apply [&_h1]:mb-4 [&_h2]:mb-4 [&_h2]:mt-8 [&_h3]:mb-3 [&_h3]:mt-6 [&_h4]:mb-2 [&_p]:mb-4 [&_li]:mb-1 [&_a]:text-main-600;
+  }
+}
